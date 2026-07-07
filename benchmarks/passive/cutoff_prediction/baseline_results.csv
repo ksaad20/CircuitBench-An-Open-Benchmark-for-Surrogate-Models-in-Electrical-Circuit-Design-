@@ -1,1 +1,8 @@
+Example:
 
+Model	RMSE	MAE	R²
+Linear Regression	0.42	0.31	0.96
+Random Forest	0.18	0.12	0.99
+XGBoost	0.15	0.10	0.995
+
+This gives new contributors a baseline for comparison.

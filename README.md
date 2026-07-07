@@ -1,4 +1,4 @@
-# Circuit Bench-An-Open-Benchmark-for-Surrogate-Models-in-Electrical-Circuit-Design-
+# Circuit Bench-An-Open-Benchmark-for-Surrogate-Models-in-Electrical-Circuit-Design
 CircuitBench is an open-source benchmark designed to provide a standardized platform for evaluating machine learning algorithms in electrical circuit analysis, optimization, and surrogate modeling. The project addresses the lack of a unified evaluation framework for AI-driven electrical engineering design by integrating reproducible circuit simulations, curated datasets, standardized performance metrics, and reference implementations of state-of-the-art machine learning models.
 
 The benchmark contains a diverse collection of analog, digital, power electronic, RF, and passive circuit topologies simulated using open-source SPICE engines. Each circuit is evaluated under extensive parameter sweeps to generate high-quality datasets describing electrical behavior, including voltage, current, frequency response, transient response, efficiency, power dissipation, stability, and harmonic distortion.

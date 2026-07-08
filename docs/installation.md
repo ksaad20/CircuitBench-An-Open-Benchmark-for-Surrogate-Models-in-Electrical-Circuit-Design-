@@ -1,7 +1,7 @@
 Explain:
 
-Python version
-ngspice installation
-PySpice installation
-Required packages
-GPU support (if applicable)
+1. Python version
+2. ngspice installation
+3. PySpice installation
+4. Required packages
+5. GPU support (if applicable)

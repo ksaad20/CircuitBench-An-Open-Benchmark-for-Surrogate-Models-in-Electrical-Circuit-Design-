@@ -9,7 +9,7 @@ summarize repeated latency measurements, and compute throughput-style
 performance metrics for benchmarking models and pipelines.
 
 Author: CircuitBench
-License: MIT
+License: Apache 2.0
 """
 
 from __future__ import annotations

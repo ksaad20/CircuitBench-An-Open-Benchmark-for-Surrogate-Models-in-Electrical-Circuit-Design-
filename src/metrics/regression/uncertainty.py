@@ -356,3 +356,57 @@ def uncertainty_report(
         )
 
     }
+
+__all__ = [
+    # Confidence Intervals
+    "confidence_interval",
+    "bootstrap_confidence_interval",
+    "jackknife_confidence_interval",
+
+    # Prediction Intervals
+    "prediction_interval",
+    "confidence_interval_prediction",
+    "bootstrap_prediction_interval",
+    "bayesian_prediction_interval",
+
+    # Coverage
+    "coverage_probability",
+    "empirical_coverage",
+    "average_interval_width",
+    "interval_score",
+    "winkler_score",
+
+    # Calibration
+    "calibration_error",
+    "expected_calibration_error",
+    "maximum_calibration_error",
+    "calibration_curve",
+    "calibration_slope",
+    "calibration_intercept",
+
+    # Predictive Uncertainty
+    "prediction_entropy",
+    "predictive_variance",
+    "predictive_std",
+    "predictive_covariance",
+
+    # Bayesian Metrics
+    "posterior_variance",
+    "posterior_entropy",
+    "credible_interval",
+
+    # Decomposition
+    "aleatoric_uncertainty",
+    "epistemic_uncertainty",
+    "total_uncertainty",
+    "uncertainty_ratio",
+
+    # Probabilistic Metrics
+    "negative_log_likelihood",
+    "continuous_ranked_probability_score",
+    "brier_score_regression",
+
+    # Summary
+    "uncertainty_report",
+    "uncertainty_summary",
+]

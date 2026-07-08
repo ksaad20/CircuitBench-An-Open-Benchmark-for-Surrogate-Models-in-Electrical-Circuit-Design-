@@ -5,8 +5,16 @@ statistics.py
 Core statistical utilities for CircuitBench.
 
 Author: Asif Kazi
-License: MIT
+License: Apache 2.0
 """
+from scipy.stats import gmean
+from scipy.stats import hmean
+from scipy.stats import trim_mean
+from scipy.stats import median_abs_deviation
+from scipy.stats import pearsonr
+from sklearn.metrics import mean_squared_error
+import numpy as np
+import pandas as pd
 
 from __future__ import annotations
 
@@ -28,7 +36,187 @@ class Statistics:
     """
     General statistical utilities for benchmark analysis.
     """
+    @staticmethod
+def describe(df: pd.DataFrame):
 
+    """
+    Statistical description of a dataframe.
+    """
+
+    return df.describe(include="all")
+
+    @staticmethod
+def iqr(values):
+
+    values = np.asarray(values)
+
+    q1 = np.percentile(values,25)
+
+    q3 = np.percentile(values,75)
+
+    return q3-q1
+
+    @staticmethod
+def bootstrap_ci(values,
+                 n_bootstrap=1000,
+                 confidence=95):
+
+    values=np.asarray(values)
+
+    means=[]
+
+    for _ in range(n_bootstrap):
+
+        sample=np.random.choice(
+            values,
+            size=len(values),
+            replace=True
+        )
+
+        means.append(np.mean(sample))
+
+    alpha=(100-confidence)/2
+
+    return np.percentile(
+        means,
+        [alpha,100-alpha]
+    )
+
+    @staticmethod
+def gini(values):
+
+    values=np.sort(np.asarray(values))
+
+    n=len(values)
+
+    index=np.arange(1,n+1)
+
+    return (
+        np.sum(
+            (2*index-n-1)*values
+        )
+        /
+        (
+            n*np.sum(values)
+        )
+    )
+
+    @staticmethod
+def rmse_statistics(
+        y_true,
+        y_pred):
+
+    rmse=np.sqrt(
+        mean_squared_error(
+            y_true,
+            y_pred
+        )
+    )
+
+    return {
+
+        "RMSE":rmse,
+
+        "Mean Error":
+        np.mean(
+            np.asarray(y_pred)
+            -
+            np.asarray(y_true)
+        ),
+
+        "Std Error":
+        np.std(
+            np.asarray(y_pred)
+            -
+            np.asarray(y_true)
+        )
+
+    }
+
+    @staticmethod
+def normalize_metrics(df):
+
+    numeric=df.select_dtypes(
+        include=np.number
+    )
+
+    return (
+
+        numeric
+
+        -
+
+        numeric.min()
+
+    )/(
+
+        numeric.max()
+
+        -
+
+        numeric.min()
+
+    )
+
+    @staticmethod
+    def geometric_mean(values):
+
+    return gmean(values)
+
+    @staticmethod
+    def harmonic_mean(values):
+
+    return hmean(values)
+
+    @staticmethod
+    def trimmed_mean(
+        values,
+        proportion=0.10):
+
+    return trim_mean(
+        values,
+        proportion
+    )
+
+    @staticmethod
+    def median_absolute_deviation(values):
+
+    return median_abs_deviation(values)
+
+    @staticmethod
+    def standard_error(values):
+
+    return np.std(
+        values,
+        ddof=1
+    )/np.sqrt(len(values))
+
+    @staticmethod
+    def correlation(
+        x,
+        y):
+
+    coefficient,p=pearsonr(x,y)
+
+    return {
+
+        "Correlation":
+        coefficient,
+
+        "p-value":
+        p
+
+    }
+
+    
+    @staticmethod
+    def covariance(
+        x,
+        y):
+
+    return np.cov(x,y)[0,1]
+
+    
     @staticmethod
     def count(values):
 
@@ -365,3 +553,35 @@ class Statistics:
         return df.mean(
             numeric_only=True
   )
+
+  @staticmethod
+  def covariance(
+        x,
+        y):
+
+    return np.cov(x,y)[0,1]
+
+  @staticmethod
+  def weighted_score(
+        metrics,
+        weights):
+
+    score=0
+
+    for key,value in metrics.items():
+
+        score+=value*weights.get(
+            key,
+            1.0
+        )
+
+    return score
+  
+    @staticmethod
+    def aggregate_metrics(df):
+
+    return df.mean(
+        numeric_only=True
+    )
+
+    

@@ -409,4 +409,45 @@ def residual_summary(
 
     }
 
+__all__ = [
+    "residuals",
+    "absolute_residuals",
+    "signed_residuals",
+    "squared_residuals",
+    "percentage_residuals",
+
+    "residual_summary",
+    "residual_mean",
+    "residual_variance",
+    "residual_standard_deviation",
+    "residual_range",
+    "residual_iqr",
+
+    "standardized_residuals",
+    "studentized_residuals",
+    "deleted_residuals",
+    "externally_studentized_residuals",
+    "internally_studentized_residuals",
+
+    "residual_autocorrelation",
+    "durbin_watson",
+    "ljung_box",
+    "runs_test",
+
+    "residual_skewness",
+    "residual_kurtosis",
+    "residual_entropy",
+    "residual_histogram",
+    "residual_density",
+
+    "residual_outliers",
+    "outlier_percentage",
+    "high_residual_points",
+    "inlier_ratio",
+
+    "qq_plot_data",
+    "residual_plot_data",
+    "scale_location_data",
+    "residual_vs_fitted_data",
+]
 

@@ -249,3 +249,44 @@ def regression_diagnostic_summary(
         condition_number(X)
 
     }
+
+__all__ = [
+    "hat_matrix",
+    "leverage",
+    "average_leverage",
+    "high_leverage_points",
+
+    "cooks_distance",
+    "influential_points",
+    "dfbetas",
+    "dffits",
+    "covariance_ratio",
+
+    "studentized_deleted_residuals",
+    "internally_studentized_residuals",
+    "externally_studentized_residuals",
+
+    "variance_inflation",
+    "multicollinearity_report",
+    "condition_number",
+    "condition_indices",
+    "eigenvalue_analysis",
+
+    "leave_one_out_error",
+    "jackknife_residuals",
+    "cross_validation_residuals",
+
+    "parameter_sensitivity",
+    "prediction_sensitivity",
+    "feature_importance_change",
+
+    "influence_summary",
+    "top_influential_points",
+    "least_influential_points",
+
+    "added_variable_statistics",
+    "partial_regression_statistics",
+    "covariance_influence",
+    "robust_leverage",
+    "hat_statistics",
+]

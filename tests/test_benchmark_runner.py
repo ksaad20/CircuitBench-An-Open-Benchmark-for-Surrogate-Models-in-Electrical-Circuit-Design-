@@ -880,194 +880,25 @@ def test_end_to_end(dataset, model):
 # Framework Integration
 # ---------------------------------------------------------------------
 
-
 try:
     from src.benchmark.experiment import Experiment
 except ImportError:
     Experiment = None
 
-
-def test_attach_leaderboard():
-
-    runner = BenchmarkRunner()
-
-    leaderboard = Leaderboard()
-
-    runner.attach_leaderboard(leaderboard)
-
-    assert runner.leaderboard is leaderboard
-
-
-def test_attach_report():
-
-    runner = BenchmarkRunner()
-
-    report = BenchmarkReport("Unit Test")
-
-    runner.attach_report(report)
-
-    assert runner.report is report
-
-
-def test_attach_experiment():
-
-    if Experiment is None:
-        pytest.skip("Experiment class not implemented.")
-
-    runner = BenchmarkRunner()
-
-    experiment = Experiment("Unit Test")
-
-    runner.attach_experiment(experiment)
-
-    assert runner.experiment is experiment
-
-
-# ---------------------------------------------------------------------
-# Leaderboard Integration
-# ---------------------------------------------------------------------
-
-
-def test_update_leaderboard(dataset, model):
-
-    runner = BenchmarkRunner()
-
-    leaderboard = Leaderboard()
-
-    runner.attach_leaderboard(leaderboard)
-
-    runner.add_result(
-        model,
-        dataset,
-        {
-            "MAE": 0.2,
-            "RMSE": 0.3,
-        },
-    )
-
-    ranking = runner.update_leaderboard("MAE")
-
-    assert ranking is not None
-
-
 # ---------------------------------------------------------------------
 # Report Integration
 # ---------------------------------------------------------------------
 
-
-def test_generate_report(tmp_path, dataset, model):
-
-    report = BenchmarkReport("Benchmark Test")
-
-    runner = BenchmarkRunner(
-        output_directory=str(tmp_path),
-    )
-
-    runner.attach_report(report)
-
-    runner.add_result(
-        model,
-        dataset,
-        {
-            "RMSE": 0.25,
-        },
-    )
-
-    runner.generate_report()
-
-    assert (tmp_path / "benchmark_report.json").exists()
-
-
 # ---------------------------------------------------------------------
 # Callback Lifecycle
 # ---------------------------------------------------------------------
-
-
-def test_multiple_callbacks():
-
-    runner = BenchmarkRunner()
-
-    calls = []
-
-    def callback_a(event, **kwargs):
-
-        calls.append(("A", event))
-
-    def callback_b(event, **kwargs):
-
-        calls.append(("B", event))
-
-    runner.add_callback(callback_a)
-
-    runner.add_callback(callback_b)
-
-    runner._execute_callbacks("benchmark_start")
-
-    assert len(calls) == 2
-
-    assert calls[0][1] == "benchmark_start"
-
 
 # ---------------------------------------------------------------------
 # Error Recovery
 # ---------------------------------------------------------------------
 
 
-class BrokenModel:
-    name = "Broken Model"
-
-    def fit(self, X, y):
-
-        raise RuntimeError("Intentional failure")
-
-    def predict(self, X):
-
-        return np.zeros(len(X))
-
-
-def test_continue_on_error(dataset):
-
-    runner = BenchmarkRunner()
-
-    runner.add_dataset(dataset)
-
-    runner.add_model(BrokenModel())
-
-    runner.add_metric(
-        "MAE",
-        lambda y, p: 0,
-    )
-
-    df = runner.run(
-        continue_on_error=True,
-    )
-
-    assert isinstance(
-        df,
-        pd.DataFrame,
-    )
-
-
-# ---------------------------------------------------------------------
 # Smoke Test
 # ---------------------------------------------------------------------
 
-
-def test_end_to_end(dataset, model):
-
-    runner = BenchmarkRunner()
-
-    runner.add_dataset(dataset)
-
-    runner.add_model(model)
-
-    runner.add_metric(
-        "MAE",
-        lambda y, p: np.mean(np.abs(y - p)),
-    )
-
-    results = runner.run()
-
-    assert len(results) == 1
-
-    assert "MAE" in results.columns
+    

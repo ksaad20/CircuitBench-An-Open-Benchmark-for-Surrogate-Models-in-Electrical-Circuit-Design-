@@ -442,3 +442,298 @@ class BenchmarkRunner:
 
         )
 
+
+    ####################################################################
+    # Internal Execution Helpers
+    ####################################################################
+
+    def _fit_model(
+        self,
+        model,
+        X_train,
+        y_train,
+    ):
+
+        start = time.perf_counter()
+
+        model.fit(
+            X_train,
+            y_train,
+        )
+
+        elapsed = time.perf_counter() - start
+
+        return elapsed
+
+    # ------------------------------------------------------------------
+
+    def _predict(
+        self,
+        model,
+        X_test,
+    ):
+
+        start = time.perf_counter()
+
+        predictions = model.predict(
+            X_test,
+        )
+
+        elapsed = time.perf_counter() - start
+
+        return predictions, elapsed
+
+    # ------------------------------------------------------------------
+
+    def _evaluate_metrics(
+        self,
+        y_true,
+        y_pred,
+    ):
+
+        results = {}
+
+        for name, metric in self.metrics.items():
+
+            try:
+
+                results[name] = float(
+
+                    metric(
+
+                        y_true,
+
+                        y_pred,
+
+                    )
+
+                )
+
+            except Exception as e:
+
+                self.logger.exception(e)
+
+                results[name] = np.nan
+
+        return results
+
+    ####################################################################
+    # Single Benchmark
+    ####################################################################
+
+    def run_single(
+
+        self,
+
+        model,
+
+        dataset,
+
+    ):
+
+        self.logger.info(
+
+            "Running %s on %s",
+
+            getattr(
+
+                model,
+
+                "name",
+
+                model.__class__.__name__,
+
+            ),
+
+            getattr(
+
+                dataset,
+
+                "name",
+
+                "dataset",
+
+            ),
+
+        )
+
+        X_train = dataset.X_train
+
+        X_test = dataset.X_test
+
+        y_train = dataset.y_train
+
+        y_test = dataset.y_test
+
+        train_time = self._fit_model(
+
+            model,
+
+            X_train,
+
+            y_train,
+
+        )
+
+        predictions, inference_time = self._predict(
+
+            model,
+
+            X_test,
+
+        )
+
+        metrics = self._evaluate_metrics(
+
+            y_test,
+
+            predictions,
+
+        )
+
+        metrics["train_time"] = train_time
+
+        metrics["inference_time"] = inference_time
+
+        self.add_result(
+
+            model,
+
+            dataset,
+
+            metrics,
+
+        )
+
+        self.log_history(
+
+            model=getattr(
+
+                model,
+
+                "name",
+
+                model.__class__.__name__,
+
+            ),
+
+            dataset=getattr(
+
+                dataset,
+
+                "name",
+
+                "dataset",
+
+            ),
+
+            metrics=metrics,
+
+        )
+
+        return metrics
+
+    ####################################################################
+    # Complete Benchmark Loop
+    ####################################################################
+
+    def run(
+
+        self,
+
+        continue_on_error=True,
+
+    ):
+
+        self.validate()
+
+        self.start_timer()
+
+        self.summary()
+
+        total = (
+
+            len(self.models)
+
+            *
+
+            len(self.datasets)
+
+        )
+
+        completed = 0
+
+        self.logger.info(
+
+            "Beginning benchmark (%d jobs)",
+
+            total,
+
+        )
+
+        for dataset in self.datasets:
+
+            for model in self.models:
+
+                completed += 1
+
+                self.logger.info(
+
+                    "[%d/%d]",
+
+                    completed,
+
+                    total,
+
+                )
+
+                try:
+
+                    self._execute_callbacks(
+
+                        "before_run",
+
+                        model=model,
+
+                        dataset=dataset,
+
+                    )
+
+                    self.run_single(
+
+                        model,
+
+                        dataset,
+
+                    )
+
+                    self._execute_callbacks(
+
+                        "after_run",
+
+                        model=model,
+
+                        dataset=dataset,
+
+                    )
+
+                except Exception as e:
+
+                    self.logger.exception(e)
+
+                    if not continue_on_error:
+
+                        raise
+
+        elapsed = self.stop_timer()
+
+        self.logger.info(
+
+            "Benchmark completed in %.3f seconds",
+
+            elapsed,
+
+        )
+
+        return self.results_dataframe()
+

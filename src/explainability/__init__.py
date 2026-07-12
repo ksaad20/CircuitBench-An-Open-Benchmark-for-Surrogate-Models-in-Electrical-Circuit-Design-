@@ -15,9 +15,11 @@ Modules
 from .permutation_importance import PermutationImportance
 from .shap_wrapper import SHAPWrapper
 from .partial_dependence import PartialDependence
+from .ice import ICEPlots
 
 __all__ = [
     "PermutationImportance",
     "SHAPWrapper",
     "PartialDependence",
+    "ICEPlots",
 ]

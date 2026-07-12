@@ -4,9 +4,13 @@ CircuitBench Typing Definitions
 
 Shared typing aliases used throughout the framework.
 """
-
 from __future__ import annotations
 
+import random
+import time
+from pathlib import Path
+from typing import Any, Dict
+import numpy as np
 from pathlib import Path
 from typing import (
     Any,
@@ -143,22 +147,6 @@ __all__ = [
     "FeatureImportance",
     "ShapValues",
 ]
-"""
-CircuitBench Model Utilities
-============================
-
-Shared helper utilities for all model implementations.
-"""
-
-from __future__ import annotations
-
-import random
-import time
-from pathlib import Path
-from typing import Any, Dict
-
-import numpy as np
-
 # ==========================================================
 # Randomness
 # ==========================================================

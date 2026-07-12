@@ -13,7 +13,9 @@ Modules
 """
 
 from .permutation_importance import PermutationImportance
+from .shap_wrapper import SHAPWrapper
 
 __all__ = [
     "PermutationImportance",
+    "SHAPWrapper",
 ]

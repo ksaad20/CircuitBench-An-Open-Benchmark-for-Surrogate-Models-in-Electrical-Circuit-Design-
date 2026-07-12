@@ -147,12 +147,6 @@ class RegressionPlots:
 
         return ax
 
-
-__all__ = [
-    "RegressionPlots",
-]
-
-
     @staticmethod
     def plot_bland_altman(
         y_true,
@@ -298,4 +292,8 @@ __all__ = [
         )
 
         return ax
+
+__all__ = [
+    "RegressionPlots",
+]
 

@@ -152,3 +152,150 @@ __all__ = [
     "RegressionPlots",
 ]
 
+
+    @staticmethod
+    def plot_bland_altman(
+        y_true,
+        y_pred,
+        ax=None,
+    ):
+        """
+        Bland-Altman agreement plot.
+        """
+
+        y_true = np.asarray(y_true)
+
+        y_pred = np.asarray(y_pred)
+
+        mean = (y_true + y_pred) / 2.0
+
+        diff = y_true - y_pred
+
+        bias = np.mean(diff)
+
+        sd = np.std(diff)
+
+        if ax is None:
+
+            fig, ax = plt.subplots(
+                figsize=(6,6)
+            )
+
+        ax.scatter(
+            mean,
+            diff,
+            alpha=0.7,
+        )
+
+        ax.axhline(
+            bias,
+            linestyle="-",
+            linewidth=2,
+        )
+
+        ax.axhline(
+            bias + 1.96 * sd,
+            linestyle="--",
+        )
+
+        ax.axhline(
+            bias - 1.96 * sd,
+            linestyle="--",
+        )
+
+        ax.set_xlabel(
+            "Mean"
+        )
+
+        ax.set_ylabel(
+            "Difference"
+        )
+
+        ax.set_title(
+            "Bland-Altman Plot"
+        )
+
+        return ax
+
+
+    @staticmethod
+    def plot_qq(
+        residuals,
+        ax=None,
+    ):
+        """
+        QQ plot of residuals.
+        """
+
+        from scipy import stats
+
+        residuals = np.asarray(
+            residuals
+        )
+
+        if ax is None:
+
+            fig, ax = plt.subplots(
+                figsize=(6,6)
+            )
+
+        stats.probplot(
+            residuals,
+            dist="norm",
+            plot=ax,
+        )
+
+        ax.set_title(
+            "Normal QQ Plot"
+        )
+
+        return ax
+
+
+    @staticmethod
+    def plot_residuals_vs_fitted(
+        y_true,
+        y_pred,
+        ax=None,
+    ):
+        """
+        Residuals versus fitted values.
+        """
+
+        residuals = np.asarray(
+            y_true
+        ) - np.asarray(
+            y_pred
+        )
+
+        if ax is None:
+
+            fig, ax = plt.subplots(
+                figsize=(6,6)
+            )
+
+        ax.scatter(
+            y_pred,
+            residuals,
+            alpha=0.7,
+        )
+
+        ax.axhline(
+            0,
+            linestyle="--",
+        )
+
+        ax.set_xlabel(
+            "Predicted"
+        )
+
+        ax.set_ylabel(
+            "Residual"
+        )
+
+        ax.set_title(
+            "Residuals vs Fitted"
+        )
+
+        return ax
+

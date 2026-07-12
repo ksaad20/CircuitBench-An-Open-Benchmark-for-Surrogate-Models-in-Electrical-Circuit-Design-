@@ -109,7 +109,6 @@ class RegressionPlots:
         ax.set_title(
             "Residual Plot"
         )
-
         return ax
 
     @staticmethod

@@ -1156,3 +1156,281 @@ class BenchmarkRunner:
 
         }
 
+
+    ####################################################################
+    # Experiment Tracking
+    ####################################################################
+
+    def attach_experiment(
+        self,
+        experiment,
+    ):
+
+        """
+        Attach an Experiment object.
+        """
+
+        self.experiment = experiment
+
+        self.logger.info(
+            "Experiment attached."
+        )
+
+    ####################################################################
+    # Leaderboard
+    ####################################################################
+
+    def attach_leaderboard(
+        self,
+        leaderboard,
+    ):
+
+        self.leaderboard = leaderboard
+
+        self.logger.info(
+            "Leaderboard attached."
+        )
+
+    ####################################################################
+    # Report Generator
+    ####################################################################
+
+    def attach_report(
+        self,
+        report,
+    ):
+
+        self.report = report
+
+        self.logger.info(
+            "Report generator attached."
+        )
+
+    ####################################################################
+    # Statistical Analysis
+    ####################################################################
+
+    def statistical_summary(self):
+
+        try:
+
+            from .statistical_analysis.descriptive_statistics import (
+                DescriptiveStatistics,
+            )
+
+        except Exception:
+
+            self.logger.warning(
+                "Statistical package unavailable."
+            )
+
+            return {}
+
+        df = self.results_dataframe()
+
+        statistics = {}
+
+        numeric_columns = df.select_dtypes(
+            include="number"
+        ).columns
+
+        for column in numeric_columns:
+
+            values = df[column].dropna().values
+
+            if len(values) == 0:
+
+                continue
+
+            statistics[column] = (
+
+                DescriptiveStatistics.summary(
+                    values
+                )
+
+            )
+
+        self.statistics = statistics
+
+        return statistics
+
+    ####################################################################
+    # Leaderboard Update
+    ####################################################################
+
+    def update_leaderboard(
+
+        self,
+
+        primary_metric,
+
+    ):
+
+        if not hasattr(
+
+            self,
+
+            "leaderboard",
+
+        ):
+
+            return
+
+        for result in self.results:
+
+            metrics = result.copy()
+
+            model = metrics.pop("model")
+
+            dataset = metrics.pop("dataset")
+
+            self.leaderboard.add_result(
+
+                model=model,
+
+                dataset=dataset,
+
+                metrics=metrics,
+
+            )
+
+        return self.leaderboard.average_rank(
+
+            primary_metric
+
+        )
+
+    ####################################################################
+    # Report Generation
+    ####################################################################
+
+    def generate_report(
+
+        self,
+
+        title="CircuitBench Benchmark",
+
+    ):
+
+        if not hasattr(
+
+            self,
+
+            "report",
+
+        ):
+
+            return
+
+        self.report.set_metadata(
+
+            benchmark=self.name,
+
+            random_seed=self.random_state,
+
+        )
+
+        self.report.add_section(
+
+            "Overview",
+
+            "Automatically generated benchmark report.",
+
+        )
+
+        self.report.add_table(
+
+            "Results",
+
+            self.results_dataframe(),
+
+        )
+
+        self.report.add_statistics(
+
+            "Summary",
+
+            self.statistical_summary(),
+
+        )
+
+        self.report.export_json()
+
+        self.report.export_markdown()
+
+        self.report.export_csv()
+
+        self.logger.info(
+
+            "Benchmark report generated."
+
+        )
+
+    ####################################################################
+    # Finalize
+    ####################################################################
+
+    def finalize(
+
+        self,
+
+        primary_metric=None,
+
+    ):
+
+        if hasattr(
+
+            self,
+
+            "experiment",
+
+        ):
+
+            for result in self.results:
+
+                self.experiment.add_result(
+
+                    result
+
+                )
+
+            self.experiment.save()
+
+        if (
+
+            primary_metric is not None
+
+            and
+
+            hasattr(
+
+                self,
+
+                "leaderboard",
+
+            )
+
+        ):
+
+            self.update_leaderboard(
+
+                primary_metric
+
+            )
+
+        if hasattr(
+
+            self,
+
+            "report",
+
+        ):
+
+            self.generate_report()
+
+        self.logger.info(
+
+            "Benchmark finalized."
+
+        )
+

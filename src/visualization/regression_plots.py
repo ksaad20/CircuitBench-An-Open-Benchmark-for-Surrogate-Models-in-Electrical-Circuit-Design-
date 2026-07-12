@@ -152,6 +152,7 @@ class RegressionPlots:
         y_pred,
         ax=None,
     ):
+        
         y_true = np.asarray(y_true)
 
         y_pred = np.asarray(y_pred)

@@ -737,3 +737,198 @@ class BenchmarkRunner:
 
         return self.results_dataframe()
 
+
+    ####################################################################
+    # Cross Validation
+    ####################################################################
+
+    def _get_cv_splitter(self):
+
+        from sklearn.model_selection import (
+            KFold,
+            RepeatedKFold,
+            StratifiedKFold,
+            GroupKFold,
+            LeaveOneOut,
+            TimeSeriesSplit,
+        )
+
+        strategy = getattr(self, "cv_strategy", "kfold").lower()
+
+        folds = getattr(self, "cv_folds", 5)
+
+        shuffle = getattr(self, "cv_shuffle", True)
+
+        random_state = self.random_state
+
+        if strategy == "kfold":
+
+            return KFold(
+                n_splits=folds,
+                shuffle=shuffle,
+                random_state=random_state,
+            )
+
+        if strategy == "repeatedkfold":
+
+            return RepeatedKFold(
+                n_splits=folds,
+                n_repeats=5,
+                random_state=random_state,
+            )
+
+        if strategy == "stratified":
+
+            return StratifiedKFold(
+                n_splits=folds,
+                shuffle=shuffle,
+                random_state=random_state,
+            )
+
+        if strategy == "group":
+
+            return GroupKFold(
+                n_splits=folds,
+            )
+
+        if strategy == "timeseries":
+
+            return TimeSeriesSplit(
+                n_splits=folds,
+            )
+
+        if strategy == "leaveoneout":
+
+            return LeaveOneOut()
+
+        raise ValueError(
+            f"Unknown CV strategy: {strategy}"
+        )
+
+    ####################################################################
+    # Cross Validation Execution
+    ####################################################################
+
+    def cross_validate(
+        self,
+        model,
+        X,
+        y,
+        groups=None,
+    ):
+
+        splitter = self._get_cv_splitter()
+
+        fold_results = []
+
+        for fold, (train_idx, test_idx) in enumerate(
+
+            splitter.split(
+
+                X,
+
+                y,
+
+                groups,
+
+            ),
+
+            start=1,
+
+        ):
+
+            self.logger.info(
+
+                "Fold %d",
+
+                fold,
+
+            )
+
+            X_train = X[train_idx]
+
+            X_test = X[test_idx]
+
+            y_train = y[train_idx]
+
+            y_test = y[test_idx]
+
+            train_time = self._fit_model(
+
+                model,
+
+                X_train,
+
+                y_train,
+
+            )
+
+            predictions, inference_time = self._predict(
+
+                model,
+
+                X_test,
+
+            )
+
+            metrics = self._evaluate_metrics(
+
+                y_test,
+
+                predictions,
+
+            )
+
+            metrics["train_time"] = train_time
+
+            metrics["inference_time"] = inference_time
+
+            metrics["fold"] = fold
+
+            fold_results.append(
+
+                metrics
+
+            )
+
+        return fold_results
+
+    ####################################################################
+    # Aggregate Fold Results
+    ####################################################################
+
+    def aggregate_cv_results(
+        self,
+        fold_results,
+    ):
+
+        import pandas as pd
+
+        df = pd.DataFrame(
+
+            fold_results
+
+        )
+
+        summary = {}
+
+        for column in df.columns:
+
+            if column == "fold":
+
+                continue
+
+            summary[column] = {
+
+                "mean": float(df[column].mean()),
+
+                "std": float(df[column].std()),
+
+                "min": float(df[column].min()),
+
+                "max": float(df[column].max()),
+
+            }
+
+        return summary
+

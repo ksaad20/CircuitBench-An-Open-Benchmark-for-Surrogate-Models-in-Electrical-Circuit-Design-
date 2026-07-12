@@ -152,10 +152,6 @@ class RegressionPlots:
         y_pred,
         ax=None,
     ):
-        """
-        Bland-Altman agreement plot.
-        """
-
         y_true = np.asarray(y_true)
 
         y_pred = np.asarray(y_pred)

@@ -269,9 +269,6 @@ class RegressionMetrics:
         n_features=1,
 
     ):
-        __all__ = [
-    "RegressionMetrics",
-        ]
 
         return {
 
@@ -802,6 +799,10 @@ class RegressionMetrics:
         )
 
         return report
+
+__all__ = [
+    "RegressionMetrics",
+]
 
 
 

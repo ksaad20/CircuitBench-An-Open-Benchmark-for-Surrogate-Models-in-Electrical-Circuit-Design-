@@ -517,3 +517,139 @@ __all__ = [
             )
         )
 
+
+    @staticmethod
+    def prediction_interval_coverage_probability(
+        y_true,
+        lower,
+        upper,
+    ):
+        """
+        Prediction Interval Coverage Probability (PICP).
+        """
+
+        y_true = np.asarray(y_true)
+
+        lower = np.asarray(lower)
+
+        upper = np.asarray(upper)
+
+        covered = (
+
+            (y_true >= lower)
+
+            &
+
+            (y_true <= upper)
+
+        )
+
+        return float(
+
+            np.mean(covered)
+
+        )
+
+    @staticmethod
+    def mean_prediction_interval_width(
+        lower,
+        upper,
+    ):
+        """
+        Mean Prediction Interval Width (MPIW).
+        """
+
+        lower = np.asarray(lower)
+
+        upper = np.asarray(upper)
+
+        return float(
+
+            np.mean(
+
+                upper - lower
+
+            )
+
+        )
+
+    @staticmethod
+    def normalized_prediction_interval_width(
+        y_true,
+        lower,
+        upper,
+    ):
+        """
+        Normalized MPIW.
+        """
+
+        width = RegressionMetrics.mean_prediction_interval_width(
+
+            lower,
+
+            upper,
+
+        )
+
+        scale = (
+
+            np.max(y_true)
+
+            -
+
+            np.min(y_true)
+
+        )
+
+        if scale == 0:
+
+            return 0.0
+
+        return float(
+
+            width / scale
+
+        )
+
+    @staticmethod
+    def bias(
+        y_true,
+        y_pred,
+    ):
+        """
+        Mean prediction bias.
+        """
+
+        return float(
+
+            np.mean(
+
+                np.asarray(y_pred)
+
+                -
+
+                np.asarray(y_true)
+
+            )
+
+        )
+
+    @staticmethod
+    def residuals(
+        y_true,
+        y_pred,
+    ):
+        """
+        Residual vector.
+        """
+
+        return np.asarray(
+
+            y_true
+
+        ) - np.asarray(
+
+            y_pred
+
+        )
+

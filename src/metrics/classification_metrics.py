@@ -13,7 +13,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import numpy as np
 
 from sklearn.metrics import (
     accuracy_score,
@@ -32,8 +31,9 @@ from sklearn.metrics import (
     roc_curve,
     top_k_accuracy_score,
     classification_report,
-    multilabel_confusion_matrix
+    multilabel_confusion_matrix,
 )
+
 
 class ClassificationMetrics:
 
@@ -155,8 +155,7 @@ class ClassificationMetrics:
 
         return float(
             1.0
-            -
-            ClassificationMetrics.specificity(
+            - ClassificationMetrics.specificity(
                 y_true,
                 y_pred,
             )
@@ -170,8 +169,7 @@ class ClassificationMetrics:
 
         return float(
             1.0
-            -
-            ClassificationMetrics.recall(
+            - ClassificationMetrics.recall(
                 y_true,
                 y_pred,
             )
@@ -312,59 +310,48 @@ class ClassificationMetrics:
         y_score=None,
         y_prob=None,
     ):
-        
-        report: dict[str, Any] = {
 
+        report: dict[str, Any] = {
             "Accuracy": cls.accuracy(
                 y_true,
                 y_pred,
             ),
-
             "BalancedAccuracy": cls.balanced_accuracy(
                 y_true,
                 y_pred,
             ),
-
             "Precision": cls.precision(
                 y_true,
                 y_pred,
             ),
-
             "Recall": cls.recall(
                 y_true,
                 y_pred,
             ),
-
             "Specificity": cls.specificity(
                 y_true,
                 y_pred,
             ),
-
             "Sensitivity": cls.sensitivity(
                 y_true,
                 y_pred,
             ),
-
             "NPV": cls.negative_predictive_value(
                 y_true,
                 y_pred,
             ),
-
             "F1": cls.f1(
                 y_true,
                 y_pred,
             ),
-
             "MCC": cls.matthews_cc(
                 y_true,
                 y_pred,
             ),
-
             "CohenKappa": cls.cohen_kappa(
                 y_true,
                 y_pred,
             ),
-
         }
 
         if y_score is not None:
@@ -392,7 +379,7 @@ class ClassificationMetrics:
             )
 
         return report
-        
+
     @staticmethod
     def per_class_report(
         y_true,
@@ -484,7 +471,7 @@ class ClassificationMetrics:
             average="macro",
         )
 
+
 __all__ = [
     "ClassificationMetrics",
 ]
-

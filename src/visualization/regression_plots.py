@@ -63,9 +63,7 @@ class RegressionPlots:
 
         ax.set_ylabel("Predicted")
 
-        ax.set_title(
-            "Actual vs Predicted"
-        )
+        ax.set_title("Actual vs Predicted")
 
         return ax
 
@@ -98,17 +96,11 @@ class RegressionPlots:
             linestyle="--",
         )
 
-        ax.set_xlabel(
-            "Predicted"
-        )
+        ax.set_xlabel("Predicted")
 
-        ax.set_ylabel(
-            "Residual"
-        )
+        ax.set_ylabel("Residual")
 
-        ax.set_title(
-            "Residual Plot"
-        )
+        ax.set_title("Residual Plot")
         return ax
 
     @staticmethod
@@ -132,17 +124,11 @@ class RegressionPlots:
             bins=bins,
         )
 
-        ax.set_xlabel(
-            "Prediction Error"
-        )
+        ax.set_xlabel("Prediction Error")
 
-        ax.set_ylabel(
-            "Frequency"
-        )
+        ax.set_ylabel("Frequency")
 
-        ax.set_title(
-            "Prediction Error Distribution"
-        )
+        ax.set_title("Prediction Error Distribution")
 
         return ax
 
@@ -152,7 +138,7 @@ class RegressionPlots:
         y_pred,
         ax=None,
     ):
-        
+
         y_true = np.asarray(y_true)
 
         y_pred = np.asarray(y_pred)
@@ -167,9 +153,7 @@ class RegressionPlots:
 
         if ax is None:
 
-            fig, ax = plt.subplots(
-                figsize=(6,6)
-            )
+            fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.scatter(
             mean,
@@ -193,20 +177,13 @@ class RegressionPlots:
             linestyle="--",
         )
 
-        ax.set_xlabel(
-            "Mean"
-        )
+        ax.set_xlabel("Mean")
 
-        ax.set_ylabel(
-            "Difference"
-        )
+        ax.set_ylabel("Difference")
 
-        ax.set_title(
-            "Bland-Altman Plot"
-        )
+        ax.set_title("Bland-Altman Plot")
 
         return ax
-
 
     @staticmethod
     def plot_qq(
@@ -219,15 +196,11 @@ class RegressionPlots:
 
         from scipy import stats
 
-        residuals = np.asarray(
-            residuals
-        )
+        residuals = np.asarray(residuals)
 
         if ax is None:
 
-            fig, ax = plt.subplots(
-                figsize=(6,6)
-            )
+            fig, ax = plt.subplots(figsize=(6, 6))
 
         stats.probplot(
             residuals,
@@ -235,12 +208,9 @@ class RegressionPlots:
             plot=ax,
         )
 
-        ax.set_title(
-            "Normal QQ Plot"
-        )
+        ax.set_title("Normal QQ Plot")
 
         return ax
-
 
     @staticmethod
     def plot_residuals_vs_fitted(
@@ -252,17 +222,11 @@ class RegressionPlots:
         Residuals versus fitted values.
         """
 
-        residuals = np.asarray(
-            y_true
-        ) - np.asarray(
-            y_pred
-        )
+        residuals = np.asarray(y_true) - np.asarray(y_pred)
 
         if ax is None:
 
-            fig, ax = plt.subplots(
-                figsize=(6,6)
-            )
+            fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.scatter(
             y_pred,
@@ -275,21 +239,15 @@ class RegressionPlots:
             linestyle="--",
         )
 
-        ax.set_xlabel(
-            "Predicted"
-        )
+        ax.set_xlabel("Predicted")
 
-        ax.set_ylabel(
-            "Residual"
-        )
+        ax.set_ylabel("Residual")
 
-        ax.set_title(
-            "Residuals vs Fitted"
-        )
+        ax.set_title("Residuals vs Fitted")
 
         return ax
+
 
 __all__ = [
     "RegressionPlots",
 ]
-

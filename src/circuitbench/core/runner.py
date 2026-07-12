@@ -6,8 +6,7 @@ class BenchmarkRunner:
     def __init__(self):
         self.registry = BenchmarkRegistry()
 
-        logging.basicConfig(level=logging.INFO,
-                            format="%(levelname)s | %(message)s")
+        logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 
     def register(self, benchmark):
         self.registry.register(benchmark)

@@ -33,8 +33,7 @@ class Evaluator:
         keys = set(first.keys()) | set(second.keys())
 
         for key in keys:
-            comparison[key] = {"first": first.get(
-                key), "second": second.get(key)}
+            comparison[key] = {"first": first.get(key), "second": second.get(key)}
 
         return comparison
 

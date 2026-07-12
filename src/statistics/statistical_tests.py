@@ -103,7 +103,7 @@ class StatisticalTests:
 
             a = combined[: len(scores_a)]
 
-            b = combined[len(scores_a):]
+            b = combined[len(scores_a) :]
 
             diff = np.mean(a) - np.mean(b)
 

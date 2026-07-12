@@ -124,8 +124,7 @@ class ModelFactory:
         model_name = config.get("model")
 
         if model_name is None:
-            raise InvalidModelError(
-                "Configuration does not contain a 'model' key.")
+            raise InvalidModelError("Configuration does not contain a 'model' key.")
 
         parameters = config.get("parameters", {})
 

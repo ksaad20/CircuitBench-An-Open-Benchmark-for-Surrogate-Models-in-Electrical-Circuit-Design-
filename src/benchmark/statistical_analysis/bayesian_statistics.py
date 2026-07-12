@@ -43,8 +43,7 @@ class BayesianStatistics:
             ddof=1,
         )
 
-        posterior_variance = 1.0 / \
-            ((1.0 / prior_variance) + (n / sample_variance))
+        posterior_variance = 1.0 / ((1.0 / prior_variance) + (n / sample_variance))
 
         posterior_mean = posterior_variance * (
             (prior_mean / prior_variance) + (n * sample_mean / sample_variance)

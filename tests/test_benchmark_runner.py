@@ -7,8 +7,10 @@ src.benchmark.runner.runner.
 
 from __future__ import annotations
 
-from .runner.runner import BenchmarkRunner
-from .runner.runner import BenchmarkResult
+from benchmark.runner.runner import (
+    BenchmarkRunner,
+    BenchmarkResult,
+)
 
 __all__ = [
     "BenchmarkRunner",

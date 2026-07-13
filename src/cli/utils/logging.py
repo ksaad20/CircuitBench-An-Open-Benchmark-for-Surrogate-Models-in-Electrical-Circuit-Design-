@@ -9,9 +9,8 @@ import sys
 from pathlib import Path
 from typing import Final
 
-DEFAULT_FORMAT: Final[str] = (
-    "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
-)
+DEFAULT_FORMAT: Final[str] = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+
 DEFAULT_DATE_FORMAT: Final[str] = "%Y-%m-%d %H:%M:%S"
 
 _CONFIGURED = False

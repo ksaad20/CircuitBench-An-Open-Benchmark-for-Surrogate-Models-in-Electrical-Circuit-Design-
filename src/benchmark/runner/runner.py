@@ -18,32 +18,32 @@ class BenchmarkResult:
     """Stores the result of a benchmark execution."""
     
         name: str
-            success: bool
-                execution_time: float
-                    metrics: dict[str, Any] = field(default_factory=dict)
-                        metadata: dict[str, Any] = field(default_factory=dict)
+        success: bool
+        execution_time: float
+        metrics: dict[str, Any] = field(default_factory=dict)
+        metadata: dict[str, Any] = field(default_factory=dict)
                         
                         
-                        class BenchmarkRunner:
-                            """
-                                Generic benchmark runner.
-                                    """
-                                    
-                                        def __init__(self) -> None:
-                                                self.results: list[BenchmarkResult] = []
+class BenchmarkRunner:
+    """
+    Generic benchmark runner.
+    """
+                                
+    def __init__(self) -> None:
+    self.results: list[BenchmarkResult] = []
                                                 
-                                                    def run(
-                                                            self,
-                                                                    name: str,
-                                                                            benchmark: Callable[..., Any],
-                                                                                    *args: Any,
-                                                                                            **kwargs: Any,
-                                                                                                ) -> BenchmarkResult:
-                                                                                                        """
-                                                                                                                Execute a benchmark function.
-                                                                                                                        """
+     def run(
+     self,
+     name: str,
+     benchmark: Callable[..., Any],
+               *args: Any,
+                   **kwargs: Any,
+                   ) -> BenchmarkResult:
+                         """
+                             Execute a benchmark function.
+                          """
                                                                                                                         
-                                                                                                                                start = perf_counter()
+                         start = perf_counter()
                                                                                                                                 
                                                                                                                                         try:
                                                                                                                                                     output = benchmark(*args, **kwargs)

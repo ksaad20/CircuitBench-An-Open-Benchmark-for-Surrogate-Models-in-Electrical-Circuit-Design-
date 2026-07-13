@@ -104,8 +104,6 @@ python_files = [
     "test_*.py"
 ]
 
-addopts = "-ra"
-
 [tool.setuptools.packages.find]
 include = [
     "src*"

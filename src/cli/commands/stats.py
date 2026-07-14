@@ -85,4 +85,17 @@ __all__ = [
     "directory_size",
     "human_size",
     "stats_command",
+    "command",
+    "execute",
+    "register",
 ]
+
+# Compatibility export for the CLI loader.
+
+command = stats_command
+execute = stats_command
+
+
+def register(cli):
+    """Register the stats command with a Click group."""
+    cli.add_command(stats_command)

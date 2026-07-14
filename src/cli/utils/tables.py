@@ -1,23 +1,30 @@
-"""
-Rich table helpers.
-"""
+"""Table utilities without external dependencies."""
 
 from __future__ import annotations
 
-from rich.console import Console
-from rich.table import Table
-
-console = Console()
+from typing import Iterable
 
 
-def display_table(title: str, columns, rows):
-
-    table = Table(title=title)
-
-    for column in columns:
-        table.add_column(column)
+def print_table(headers: list[str], rows: Iterable[Iterable[object]]) -> None:
+    rows = [[str(c) for c in row] for row in rows]
+    widths = [len(h) for h in headers]
 
     for row in rows:
-        table.add_row(*[str(x) for x in row])
+        for i, cell in enumerate(row):
+            widths[i] = max(widths[i], len(cell))
 
-    console.print(table)
+    header = " | ".join(
+        h.ljust(widths[i]) for i, h in enumerate(headers)
+    )
+    divider = "-+-".join("-" * w for w in widths)
+
+    print(header)
+    print(divider)
+
+    for row in rows:
+        print(
+            " | ".join(
+                row[i].ljust(widths[i])
+                for i in range(len(headers))
+            )
+        )

@@ -1,0 +1,92 @@
+[1mdiff --git a/src/cli/commands/doctor.py b/src/cli/commands/doctor.py[m
+[1mindex fa83c7e..4542012 100644[m
+[1m--- a/src/cli/commands/doctor.py[m
+[1m+++ b/src/cli/commands/doctor.py[m
+[36m@@ -6,55 +6,56 @@[m [mfrom pathlib import Path[m
+ [m
+ import typer[m
+ [m
+[31m-app = typer.Typer(help="Run diagnostic checks.")[m
+[32m+[m[32mapp = typer.Typer(help="Check Circuit-Bench installation and environment diagnostics.")[m
+ [m
+ [m
+ @app.callback(invoke_without_command=True)[m
+ def doctor() -> None:[m
+[31m-    """Run system diagnostics."""[m
+[32m+[m[32m    """Run environment and system diagnostics."""[m
+ [m
+     typer.echo("Circuit-Bench Doctor")[m
+     typer.echo("=" * 24)[m
+ [m
+[31m-    typer.echo(f"✓ Python: {platform.python_version()}")[m
+[31m-    typer.echo(f"✓ Platform: {platform.system()} {platform.release()}")[m
+[31m-    typer.echo(f"✓ Executable: {sys.executable}")[m
+[32m+[m[32m    typer.echo(f"Python       : {platform.python_version()}")[m
+[32m+[m[32m    typer.echo(f"Platform     : {platform.system()} {platform.release()}")[m
+[32m+[m[32m    typer.echo(f"Architecture : {platform.machine()}")[m
+[32m+[m[32m    typer.echo(f"Executable   : {sys.executable}")[m
+ [m
+[31m-    project_root = Path.cwd()[m
+[32m+[m[32m    root = Path.cwd()[m
+ [m
+     checks = {[m
+[31m-        "datasets": project_root / "datasets",[m
+[31m-        "benchmarks": project_root / "benchmarks",[m
+[31m-        "src": project_root / "src",[m
+[31m-        "docs": project_root / "docs",[m
+[32m+[m[32m        "datasets": root / "datasets",[m
+[32m+[m[32m        "benchmarks": root / "benchmarks",[m
+[32m+[m[32m        "src": root / "src",[m
+[32m+[m[32m        "docs": root / "docs",[m
+     }[m
+ [m
+[31m-    for name, path in checks.items():[m
+[31m-        if path.exists():[m
+[31m-            typer.echo(f"✓ {name:<12} Found")[m
+[31m-        else:[m
+[31m-            typer.echo(f"✗ {name:<12} Missing")[m
+[31m-[m
+[31m-    typer.echo("\nOverall status: HEALTHY")[m
+[32m+[m[32m    healthy = True[m
+ [m
+[32m+[m[32m    typer.echo("\nProject structure:")[m
+ [m
+[31m-app = typer.Typer(help="Check Circuit-Bench installation and environment.")[m
+[32m+[m[32m    for name, path in checks.items():[m
+[32m+[m[32m        exists = path.exists()[m
+[32m+[m[32m        healthy &= exists[m
+[32m+[m[32m        typer.echo(f"  {name:<12} : {'FOUND' if exists else 'MISSING'}")[m
+ [m
+[32m+[m[32m    typer.echo("\nEnvironment:")[m
+ [m
+[31m-@app.callback(invoke_without_command=True)[m
+[31m-def doctor() -> None:[m
+[31m-    """Run environment diagnostics."""[m
+[32m+[m[32m    typer.echo(f"  Python       : {sys.version.split()[0]}")[m
+[32m+[m[32m    typer.echo(f"  Platform     : {platform.system()}")[m
+[32m+[m[32m    typer.echo(f"  Architecture : {platform.machine()}")[m
+ [m
+[31m-    typer.echo("Circuit-Bench Doctor")[m
+[31m-    typer.echo("===================")[m
+[32m+[m[32m    typer.echo()[m
+ [m
+[31m-    checks = {[m
+[31m-        "Python": sys.version.split()[0],[m
+[31m-        "Platform": platform.system(),[m
+[31m-        "Architecture": platform.machine(),[m
+[31m-    }[m
+[32m+[m[32m    if healthy:[m
+[32m+[m[32m        typer.secho("Overall status: HEALTHY", fg=typer.colors.GREEN, bold=True)[m
+[32m+[m[32m    else:[m
+[32m+[m[32m        typer.secho([m
+[32m+[m[32m            "Overall status: WARNINGS DETECTED",[m
+[32m+[m[32m            fg=typer.colors.YELLOW,[m
+[32m+[m[32m            bold=True,[m
+[32m+[m[32m        )[m
+ [m
+[31m-    for key, value in checks.items():[m
+[31m-        typer.echo(f"✅ {key}: {value}")[m
+ [m
+[31m-    typer.echo("\nEnvironment check complete.")[m
+[32m+[m[32mif __name__ == "__main__":[m
+[32m+[m[32m    app()[m

@@ -8,6 +8,7 @@ import typer
 
 app = typer.Typer(help="Check Circuit-Bench installation and environment diagnostics.")
 
+
 @app.callback(invoke_without_command=True)
 def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
     """Run environment and system diagnostics."""

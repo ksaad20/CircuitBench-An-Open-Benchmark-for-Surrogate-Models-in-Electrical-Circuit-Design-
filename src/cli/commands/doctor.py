@@ -6,21 +6,26 @@ from pathlib import Path
 
 import typer
 
-app = typer.Typer(help="Run diagnostic checks.")
+app = typer.Typer(
+    help="Check Circuit-Bench installation and environment diagnostics."
+)
 
 
 @app.callback(invoke_without_command=True)
 def doctor() -> None:
-    """Run system diagnostics."""
+    """Run environment and system diagnostics."""
 
     typer.echo("Circuit-Bench Doctor")
     typer.echo("=" * 24)
 
-    typer.echo(f"✓ Python: {platform.python_version()}")
-    typer.echo(f"✓ Platform: {platform.system()} {platform.release()}")
-    typer.echo(f"✓ Executable: {sys.executable}")
+    typer.echo(f"Python       : {platform.python_version()}")
+    typer.echo(f"Platform     : {platform.system()} {platform.release()}")
+    typer.echo(f"Architecture : {platform.machine()}")
+    typer.echo(f"Executable   : {sys.executable}")
 
     project_root = Path.cwd()
+
+    typer.echo("\nProject structure:")
 
     checks = {
         "datasets": project_root / "datasets",
@@ -29,32 +34,36 @@ def doctor() -> None:
         "docs": project_root / "docs",
     }
 
+    healthy = True
+
     for name, path in checks.items():
-        if path.exists():
-            typer.echo(f"✓ {name:<12} Found")
-        else:
-            typer.echo(f"✗ {name:<12} Missing")
+        exists = path.exists()
+        healthy &= exists
+        status = "FOUND" if exists else "MISSING"
+        typer.echo(f"  {name:<12} : {status}")
 
-    typer.echo("\nOverall status: HEALTHY")
+    typer.echo("\nEnvironment:")
 
-
-app = typer.Typer(help="Check Circuit-Bench installation and environment.")
-
-
-@app.callback(invoke_without_command=True)
-def doctor() -> None:
-    """Run environment diagnostics."""
-
-    typer.echo("Circuit-Bench Doctor")
-    typer.echo("===================")
-
-    checks = {
+    env_checks = {
         "Python": sys.version.split()[0],
         "Platform": platform.system(),
         "Architecture": platform.machine(),
     }
 
-    for key, value in checks.items():
-        typer.echo(f"✅ {key}: {value}")
+    for key, value in env_checks.items():
+        typer.echo(f"  {key:<12} : {value}")
 
-    typer.echo("\nEnvironment check complete.")
+    typer.echo()
+
+    if healthy:
+        typer.secho(
+            "Overall status: HEALTHY",
+            fg=typer.colors.GREEN,
+            bold=True,
+        )
+    else:
+        typer.secho(
+            "Overall status: WARNINGS DETECTED",
+            fg=typer.colors.YELLOW,
+            bold=True,
+        )

@@ -6,7 +6,7 @@ from .benchmarks import benchmarks
 from .cache import cache
 from .clean import clean
 from .config import config
-from .create import create
+from .create import app as create_app
 from .datasets import datasets
 from .evaluate import evaluate
 from .export import export
@@ -27,7 +27,7 @@ __all__ = [
     "cache",
     "clean",
     "config",
-    "create",
+    "create_app",
     "datasets",
     "evaluate",
     "export",

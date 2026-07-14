@@ -37,4 +37,29 @@ class BenchmarkRunner:
         *args: Any,
         **kwargs: Any,
     ) -> BenchmarkResult:
-        
+        """Execute a benchmark function."""
+
+        start = perf_counter()
+
+        success = True
+        metrics: dict[str, Any] = {}
+
+        try:
+            output = benchmark(*args, **kwargs)
+            if isinstance(output, dict):
+                metrics = output
+        except Exception as exc:
+            success = False
+            metrics["error"] = str(exc)
+
+        execution_time = perf_counter() - start
+
+        result = BenchmarkResult(
+            name=name,
+            success=success,
+            execution_time=execution_time,
+            metrics=metrics,
+        )
+
+        self.results.append(result)
+        return result

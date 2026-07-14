@@ -36,3 +36,27 @@ def doctor() -> None:
             typer.echo(f"✗ {name:<12} Missing")
 
     typer.echo("\nOverall status: HEALTHY")
+
+
+app = typer.Typer(
+    help="Check Circuit-Bench installation and environment."
+)
+
+
+@app.callback(invoke_without_command=True)
+def doctor() -> None:
+    """Run environment diagnostics."""
+
+    typer.echo("Circuit-Bench Doctor")
+    typer.echo("===================")
+
+    checks = {
+        "Python": sys.version.split()[0],
+        "Platform": platform.system(),
+        "Architecture": platform.machine(),
+    }
+
+    for key, value in checks.items():
+        typer.echo(f"✅ {key}: {value}")
+
+    typer.echo("\nEnvironment check complete.")

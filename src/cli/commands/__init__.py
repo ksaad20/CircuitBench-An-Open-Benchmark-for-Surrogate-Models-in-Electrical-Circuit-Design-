@@ -19,6 +19,7 @@ from .run import run
 from .shell import shell
 from .stats import stats
 from .validate import validate
+from .version import app as version_app
 from .version import version
 
 __all__ = [
@@ -40,4 +41,5 @@ __all__ = [
     "stats",
     "validate",
     "version",
+    "version_app",
 ]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import typer
+import sys
 from src.cli.commands.create import app as create_app
 from src.cli.commands.version import app as version_app
 
@@ -14,15 +15,6 @@ app = typer.Typer(
 
 app.add_typer(create_app, name="create")
 app.add_typer(version_app, name="version")
-
-
-from __future__ import annotations
-
-import sys
-import typer
-
-from src.cli.commands.create import app as create_app
-from src.cli.commands.version import app as version_app
 
 app = typer.Typer(
     name="circuitbench",
@@ -48,5 +40,3 @@ if __name__ == "__main__":
     main()
 
 
-if __name__ == "__main__":
-    main()

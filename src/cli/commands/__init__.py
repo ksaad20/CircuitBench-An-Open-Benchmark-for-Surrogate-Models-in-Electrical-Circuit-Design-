@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 """Circuit Bench CLI command package."""
+=======
+"""
+Circuit Bench CLI command package.
+
+Exports all Click command entry points.
+"""
+
+"""CLI command package."""
+
+from .create import app as create_app
+from .version import app as version_app
+>>>>>>> 1deeb61 (Fix CLI command package imports)
 
 from __future__ import annotations
 

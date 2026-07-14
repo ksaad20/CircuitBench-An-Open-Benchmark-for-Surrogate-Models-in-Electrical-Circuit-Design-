@@ -1,29 +1,23 @@
-"""
-Utility package for the Circuit Bench CLI.
+"""Utility package for the Circuit Bench CLI."""
 
-This package contains reusable helpers for configuration,
-logging, formatting, filesystem operations, console output,
-validation, parsing, and other CLI infrastructure.
-"""
-
-from .colors import *
-from .completion import *
-from .config import *
-from .console import *
-from .doctor import *
-from .environment import *
-from .errors import *
-from .filesystem import *
-from .formatting import *
-from .helpers import *
-from .logging import *
-from .parser import *
-from .paths import *
-from .printer import *
-from .progress import *
-from .prompts import *
-from .tables import *
-from .validators import *
+from . import colors
+from . import completion
+from . import config
+from . import console
+from . import doctor
+from . import environment
+from . import errors
+from . import filesystem
+from . import formatting
+from . import helpers
+from . import logging
+from . import parser
+from . import paths
+from . import printer
+from . import progress
+from . import prompts
+from . import tables
+from . import validators
 
 __all__ = [
     "colors",

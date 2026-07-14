@@ -38,9 +38,7 @@ def doctor() -> None:
     typer.echo("\nOverall status: HEALTHY")
 
 
-app = typer.Typer(
-    help="Check Circuit-Bench installation and environment."
-)
+app = typer.Typer(help="Check Circuit-Bench installation and environment.")
 
 
 @app.callback(invoke_without_command=True)

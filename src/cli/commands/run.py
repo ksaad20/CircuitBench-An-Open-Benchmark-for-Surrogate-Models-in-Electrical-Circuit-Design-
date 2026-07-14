@@ -1,6 +1,9 @@
 """Run benchmark command."""
 
 
-def execute(args):
-    """Execute a benchmark."""
-    print(f"Running benchmark: {args.name}")
+def run(args):
+    """Execute the run command."""
+    print("Running Circuit Bench...")
+
+
+execute = run

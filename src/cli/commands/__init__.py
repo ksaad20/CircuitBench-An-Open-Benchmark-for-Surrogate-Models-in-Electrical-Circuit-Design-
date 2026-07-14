@@ -3,6 +3,10 @@ Circuit Bench CLI command package.
 
 Exports all Click command entry points.
 """
+"""CLI command package."""
+
+from .create import app as create_app
+from .version import app as version_app
 
 from __future__ import annotations
 
@@ -44,6 +48,8 @@ __all__ = [
     "stats",
     "validate",
     "version",
+    "create_app",
+    "version_app",
 ]
 
 """CLI commands package."""

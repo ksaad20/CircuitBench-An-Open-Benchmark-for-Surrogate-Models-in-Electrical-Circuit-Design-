@@ -1,9 +1,10 @@
 import sys
 import os
 
-# Force add the src folder to the python path
+# Append the directory containing your packages
 sys.path.append(os.path.join(os.getcwd(), "src"))
 
+# Import from the specific path inside src
 from cli.main import main
 
 if __name__ == "__main__":

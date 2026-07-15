@@ -2,25 +2,25 @@ from __future__ import annotations
 
 import typer
 
-from src.cli.commands.create import app as create_app
-from src.cli.commands.doctor import app as doctor_app
-from src.cli.commands.version import app as version_app
-from src.cli.commands.benchmarks import app as benchmarks_app
-from src.cli.commands.cache import app as cache_app
-from src.cli.commands.clean import app as clean_app
-from src.cli.commands.config import app as config_app
-from src.cli.commands.datasets import app as datasets_app
-from src.cli.commands.evaluate import app as evaluate_app
-from src.cli.commands.export import app as export_app
-from src.cli.commands.info import app as info_app
-from src.cli.commands.leaderboard import app as leaderboard_app
-from src.cli.commands.list import app as list_app
-from src.cli.commands.plugins import app as plugins_app
-from src.cli.commands.report import app as report_app
-from src.cli.commands.run import app as run_app
-from src.cli.commands.shell import app as shell_app
-from src.cli.commands.stats import app as stats_app
-from src.cli.commands.validate import app as validate_app
+from cli.commands import app as create_app
+from src.cli.commands import app as doctor_app
+from src.cli.commands import app as version_app
+from src.cli.commands import app as benchmarks_app
+from src.cli.commands import app as cache_app
+from src.cli.commands import app as clean_app
+from src.cli.commands import app as config_app
+from src.cli.commands import app as datasets_app
+from src.cli.commands import app as evaluate_app
+from src.cli.commands import app as export_app
+from src.cli.commands import app as info_app
+from src.cli.commands import app as leaderboard_app
+from src.cli.commands import app as list_app
+from src.cli.commands import app as plugins_app
+from src.cli.commands import app as report_app
+from src.cli.commands import app as run_app
+from src.cli.commands import app as shell_app
+from src.cli.commands import app as stats_app
+from src.cli.commands import app as validate_app
 
 app = typer.Typer(
     name="circuitbench",

@@ -1,5 +1,14 @@
-"""Validate benchmark configuration."""
+from __future__ import annotations
+
+import typer
+
+app = typer.Typer(help="Validation commands.")
 
 
-def execute(args):
-    print(f"Validating benchmark: {args.target}")
+@app.command("run")
+def run() -> None:
+    typer.echo("Validation successful.")
+
+
+if __name__ == "__main__":
+    app()

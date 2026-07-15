@@ -1,9 +1,10 @@
 [build-system]
 requires = [
-    "setuptools>=68",
+    "setuptools>=61",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
+
 
 [project]
 name = "circuitbench"
@@ -97,10 +98,6 @@ target-version = [
 [tool.ruff]
 line-length = 88
 target-version = "py310"
-
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
 
 [project]
 name = "circuitbench"

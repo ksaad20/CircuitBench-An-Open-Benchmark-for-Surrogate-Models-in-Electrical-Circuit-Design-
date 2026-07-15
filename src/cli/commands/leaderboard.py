@@ -1,15 +1,14 @@
-"""Leaderboard command."""
-
 from __future__ import annotations
 
+import typer
 
-def leaderboard(args) -> None:
-    """Display the benchmark leaderboard."""
-    if hasattr(args, "results"):
-        print(f"Displaying leaderboard for {args.results}")
-    else:
-        print("Displaying benchmark leaderboard.")
+app = typer.Typer(help="Leaderboard commands.")
 
 
-# Backward compatibility
-execute = leaderboard
+@app.command("show")
+def show() -> None:
+    typer.echo("Leaderboard is empty.")
+
+
+if __name__ == "__main__":
+    app()

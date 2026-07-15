@@ -1,28 +1,15 @@
-"""
-Cleanup commands for the Circuit Bench CLI.
-"""
-
 from __future__ import annotations
 
-import click
+import typer
+
+app = typer.Typer(help="Cleaning commands.")
 
 
-@click.command()
-@click.option(
-    "--all",
-    "clean_all",
-    is_flag=True,
-    help="Remove all generated artifacts.",
-)
-def clean(clean_all: bool) -> None:
-    """Clean generated files and temporary artifacts."""
-    if clean_all:
-        click.echo("Cleaning all generated artifacts...")
-    else:
-        click.echo("Cleaning temporary artifacts...")
-
-    click.echo("Cleanup completed successfully.")
+@app.command("all")
+def clean_all() -> None:
+    """Clean all generated files."""
+    typer.echo("Clean completed.")
 
 
 if __name__ == "__main__":
-    clean()
+    app()

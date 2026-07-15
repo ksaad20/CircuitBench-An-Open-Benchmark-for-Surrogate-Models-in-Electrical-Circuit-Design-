@@ -5,6 +5,7 @@ Defines the main application entry point.
 
 import click
 
+
 @click.group()
 @click.version_option()
 def app():
@@ -12,6 +13,7 @@ def app():
     Circuit-Bench: A tool for physics-based trade arbitrage.
     """
     pass
+
 
 # Example command to verify functionality
 @app.command()

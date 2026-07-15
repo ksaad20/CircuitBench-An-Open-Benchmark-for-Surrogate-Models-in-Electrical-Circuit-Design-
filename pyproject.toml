@@ -98,14 +98,11 @@ target-version = [
 line-length = 88
 target-version = "py310"
 
-[tool.setuptools.packages.find]
+[tool.setuptools]
 packages = ["circuitbench"]
-package-dir = {"" = "src"}
 
-circuitbench = "circuitbench.cli.main:main"
-include = [
-    "src*"
-]
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.flake8]
 max-line-length = 88

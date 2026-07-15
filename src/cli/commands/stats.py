@@ -8,7 +8,9 @@ import platform
 import sys
 from pathlib import Path
 
-import click
+import typer
+
+app = typer.Typer(help="Repository statistics commands.")
 
 
 def count_files(directory: Path, suffix: str) -> int:
@@ -46,18 +48,16 @@ def human_size(size: int) -> str:
     return f"{value:.2f} TB"
 
 
-@click.command(name="stats")
-@click.argument(
-    "path",
-    required=False,
-    default=".",
-    type=click.Path(
+@app.command("show")
+def stats_command(
+    path: Path = typer.Argument(
+        Path("."),
         exists=True,
         file_okay=False,
-        path_type=Path,
+        dir_okay=True,
+        resolve_path=True,
     ),
-)
-def stats_command(path: Path) -> None:
+) -> None:
     """
     Display repository statistics.
     """
@@ -66,36 +66,36 @@ def stats_command(path: Path) -> None:
     yaml_files = count_files(path, ".yaml") + count_files(path, ".yml")
     notebook_files = count_files(path, ".ipynb")
 
-    click.echo("Circuit Bench Statistics")
-    click.echo("-" * 40)
-    click.echo(f"Root directory : {path.resolve()}")
-    click.echo(f"Python files   : {py_files}")
-    click.echo(f"JSON files     : {json_files}")
-    click.echo(f"YAML files     : {yaml_files}")
-    click.echo(f"Notebooks      : {notebook_files}")
-    click.echo(f"Repository size: " f"{human_size(directory_size(path))}")
-    click.echo()
-    click.echo(f"Python     : {platform.python_version()}")
-    click.echo(f"Platform   : {platform.platform()}")
-    click.echo(f"Executable : {sys.executable}")
+    typer.echo("Circuit Bench Statistics")
+    typer.echo("-" * 40)
+    typer.echo(f"Root directory : {path.resolve()}")
+    typer.echo(f"Python files   : {py_files}")
+    typer.echo(f"JSON files     : {json_files}")
+    typer.echo(f"YAML files     : {yaml_files}")
+    typer.echo(f"Notebooks      : {notebook_files}")
+    typer.echo(f"Repository size: {human_size(directory_size(path))}")
+    typer.echo()
+    typer.echo(f"Python     : {platform.python_version()}")
+    typer.echo(f"Platform   : {platform.platform()}")
+    typer.echo(f"Executable : {sys.executable}")
 
 
 __all__ = [
+    "app",
     "count_files",
     "directory_size",
     "human_size",
     "stats_command",
-    "command",
-    "execute",
-    "register",
 ]
-
-# Compatibility export for the CLI loader.
 
 command = stats_command
 execute = stats_command
 
 
-def register(cli):
-    """Register the stats command with a Click group."""
-    cli.add_command(stats_command)
+def register(cli) -> None:
+    """Register the Typer application with another Typer app."""
+    cli.add_typer(app, name="stats")
+
+
+if __name__ == "__main__":
+    app()

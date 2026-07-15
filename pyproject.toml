@@ -117,3 +117,6 @@ addopts = "-ra"
 python = "^3.10"
 typer = "^0.12"
 rich = "^13.7"
+
+[project.scripts]
+circuitbench = "cli.main:main"

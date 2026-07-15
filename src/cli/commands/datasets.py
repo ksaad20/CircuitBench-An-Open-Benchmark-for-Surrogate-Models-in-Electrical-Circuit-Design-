@@ -1,11 +1,14 @@
-"""Datasets CLI command."""
-
 from __future__ import annotations
 
-import click
+import typer
+
+app = typer.Typer(help="Dataset management commands.")
 
 
-@click.command(name="datasets")
-def datasets() -> None:
-    """Manage Circuit Bench datasets."""
-    click.echo("Datasets command is not yet implemented.")
+@app.command("list")
+def list_datasets() -> None:
+    typer.echo("No datasets registered.")
+
+
+if __name__ == "__main__":
+    app()

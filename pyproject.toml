@@ -105,6 +105,7 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 include = [
     "src*"
+    circuitbench = "circuitbench.cli.main:main"
 ]
 
 [tool.flake8]

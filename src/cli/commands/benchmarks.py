@@ -109,4 +109,3 @@ def benchmark_results() -> None:
 @app.command("clear")
 def clear_results() -> None:
     typer.echo("Benchmark results cleared.")
->>>>>>> 8544f86 (Fix benchmarks Typer command)

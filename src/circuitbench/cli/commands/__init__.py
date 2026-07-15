@@ -1,12 +1,11 @@
 """
 Circuit Bench CLI commands package.
-
-Commands are imported lazily by the CLI entry point.
 """
 
 from __future__ import annotations
 
-# Import the app object from your implementation file (e.g., base.py)
-from .base import app
+# Import 'app' directly from the module where it is defined.
+# If your app is defined in 'src/circuitbench/cli/commands/base.py', use:
+from circuitbench.cli.commands.base import app
 
-__all__: list[str] = ["app"]
+__all__ = ["app"]

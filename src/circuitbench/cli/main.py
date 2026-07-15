@@ -3,25 +3,25 @@ from __future__ import annotations
 import typer
 
 # Corrected imports with 'src.' removed to fix the ModuleNotFoundError
-from cli.commands import app as create_app
-from cli.commands import app as doctor_app
-from cli.commands import app as version_app
-from cli.commands import app as benchmarks_app
-from cli.commands import app as cache_app
-from cli.commands import app as clean_app
-from cli.commands import app as config_app
-from cli.commands import app as datasets_app
-from cli.commands import app as evaluate_app
-from cli.commands import app as export_app
-from cli.commands import app as info_app
-from cli.commands import app as leaderboard_app
-from cli.commands import app as list_app
-from cli.commands import app as plugins_app
-from cli.commands import app as report_app
-from cli.commands import app as run_app
-from cli.commands import app as shell_app
-from cli.commands import app as stats_app
-from cli.commands import app as validate_app
+from circuitbench.cli.commands import app as create_app
+from circuitbench.cli.commands import app as doctor_app
+from circuitbench.cli.commands import app as version_app
+from circuitbench.cli.commands import app as benchmarks_app
+from circuitbench.cli.commands import app as cache_app
+from circuitbench.cli.commands import app as clean_app
+from circuitbench.cli.commands import app as config_app
+from circuitbench.cli.commands import app as datasets_app
+from circuitbench.cli.commands import app as evaluate_app
+from circuitbench.cli.commands import app as export_app
+from circuitbench.cli.commands import app as info_app
+from circuitbench.cli.commands import app as leaderboard_app
+from circuitbench.cli.commands import app as list_app
+from circuitbench.cli.commands import app as plugins_app
+from circuitbench.cli.commands import app as report_app
+from circuitbench.cli.commands import app as run_app
+from circuitbench.cli.commands import app as shell_app
+from circuitbench.cli.commands import app as stats_app
+from circuitbench.cli.commands import app as validate_app
 
 app = typer.Typer(
     name="circuitbench",

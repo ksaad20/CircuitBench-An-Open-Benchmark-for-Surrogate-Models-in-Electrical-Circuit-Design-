@@ -1,15 +1,14 @@
-"""Export benchmark results."""
-
 from __future__ import annotations
 
+import typer
 
-def export(args) -> None:
-    """Export benchmark results."""
-    if hasattr(args, "output"):
-        print(f"Exporting results to: {args.output}")
-    else:
-        print("Exporting benchmark results.")
+app = typer.Typer(help="Export commands.")
 
 
-# Backward compatibility
-execute = export
+@app.command("report")
+def report() -> None:
+    typer.echo("Report exported.")
+
+
+if __name__ == "__main__":
+    app()

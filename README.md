@@ -6,6 +6,10 @@
 ![Ruff](https://img.shields.io/badge/linter-ruff-red)
 [![Tests](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml/badge.svg)](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml)
 
+## Architecture
+
+![CircuitBench Architecture](docs/images/architecture.png)
+
 Circuit Bench is an open benchmark designed to become the standard evaluation platform for artificial intelligence methods in electrical circuit design.
 
 Circuit Bench is an open-source benchmark designed to provide a standardized platform for evaluating machine learning algorithms in electrical circuit analysis, optimization, and surrogate modeling. The project addresses the lack of a unified evaluation framework for AI-driven electrical engineering design by integrating reproducible circuit simulations, curated datasets, standardized performance metrics, and reference implementations of state-of-the-art machine learning models.

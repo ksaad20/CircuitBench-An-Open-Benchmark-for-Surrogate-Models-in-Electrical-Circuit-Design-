@@ -55,7 +55,7 @@ Repository = "https://github.com/ksaad20/Circuit-Bench"
 Issues = "https://github.com/ksaad20/Circuit-Bench/issues"
 
 [project.scripts]
-circuitbench = "cli.main:main"
+circuitbench = "circuitbench.cli.main:main"
 
 [tool.setuptools]
 packages = ["circuitbench", "cli"]

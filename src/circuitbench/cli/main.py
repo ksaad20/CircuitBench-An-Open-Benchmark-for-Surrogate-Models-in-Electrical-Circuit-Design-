@@ -22,6 +22,7 @@ from cli.commands import app as run_app
 from cli.commands import app as shell_app
 from cli.commands import app as stats_app
 from cli.commands import app as validate_app
+
 app = typer.Typer(
     name="circuitbench",
     help="Circuit-Bench command line interface.",

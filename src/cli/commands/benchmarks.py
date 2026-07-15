@@ -1,53 +1,41 @@
-"""
-Benchmark management commands for the Circuit Bench CLI.
-"""
-
 from __future__ import annotations
 
-import click
+import typer
+
+app = typer.Typer(help="Benchmark management commands.")
 
 
-@click.group(name="benchmarks")
-def benchmarks() -> None:
-    """Manage Circuit Bench benchmarks."""
-
-
-@benchmarks.command("list")
+@app.command("list")
 def list_benchmarks() -> None:
     """List available benchmarks."""
-    click.echo("Available benchmarks:")
-    click.echo("- Analog Circuits")
-    click.echo("- Digital Circuits")
-    click.echo("- Mixed-Signal Circuits")
-    click.echo("- Power Electronics")
-    click.echo("- RF Circuits")
+    typer.echo("Available benchmarks:")
+    typer.echo("- Analog Circuits")
+    typer.echo("- Digital Circuits")
+    typer.echo("- Mixed-Signal Circuits")
+    typer.echo("- Power Electronics")
+    typer.echo("- RF Circuits")
 
 
-@benchmarks.command("run")
-@click.argument("benchmark_name")
+@app.command("run")
 def run_benchmark(benchmark_name: str) -> None:
     """Run a benchmark."""
-    click.echo(f"Running benchmark: {benchmark_name}")
-    click.echo("Benchmark completed successfully.")
+    typer.echo(f"Running benchmark: {benchmark_name}")
+    typer.echo("Benchmark completed successfully.")
 
 
-@benchmarks.command("status")
+@app.command("status")
 def benchmark_status() -> None:
     """Display benchmark status."""
-    click.echo("No benchmark is currently running.")
+    typer.echo("No benchmark is currently running.")
 
 
-@benchmarks.command("results")
+@app.command("results")
 def benchmark_results() -> None:
     """Display benchmark results."""
-    click.echo("No benchmark results are available.")
+    typer.echo("No benchmark results are available.")
 
 
-@benchmarks.command("clear")
+@app.command("clear")
 def clear_results() -> None:
     """Clear stored benchmark results."""
-    click.echo("Benchmark results cleared.")
-
-
-if __name__ == "__main__":
-    benchmarks()
+    typer.echo("Benchmark results cleared.")

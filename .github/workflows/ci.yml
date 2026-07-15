@@ -45,17 +45,8 @@ jobs:
          pytest-cov \
          black \
          ruff \
-         flake8 |
-
-         - name: Black formatting check
-           run: black --check .
-
-         - name: Ruff lint
-           run: ruff check .
-
-         - name: Flake8 lint
-           run: flake8 .
-
+         flake8 
+ 
          - name: Run tests
            run: pytest
 

@@ -48,6 +48,16 @@ Circuit-Bench v1.0 currently includes benchmark circuits from the following cate
 
 Circuit categories are selected based on their importance in electrical engineering education, industrial design workflows, and AI-assisted circuit analysis. Each benchmark category contains representative circuits intended to evaluate machine learning algorithms under reproducible conditions.
 
+## Exclusion Criteria
+
+The following are excluded from Circuit-Bench:
+
+- Incomplete circuit descriptions
+- Proprietary circuits without redistribution rights
+- Non-reproducible simulation results
+- Circuits lacking benchmark metadata
+- Duplicate benchmark instances
+
 ## Benchmark Tasks
 
 ## Dataset Inventory

@@ -1,1 +1,11 @@
-
+circuit_id,
+circuit_name,
+category,
+benchmark_task,
+difficulty,
+simulator,
+dataset,
+ground_truth,
+status,
+version,
+license

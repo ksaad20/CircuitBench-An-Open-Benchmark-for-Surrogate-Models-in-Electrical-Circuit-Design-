@@ -98,6 +98,8 @@ Published benchmark metadata must remain stable across releases unless a documen
 
 Deprecated metadata records remain archived for reproducibility.
 
+## Version
+
 git commit: git add docs/metadata_schema.md
 git commit -m "Define standardized metadata schema for Circuit-Bench"
 git push origin main

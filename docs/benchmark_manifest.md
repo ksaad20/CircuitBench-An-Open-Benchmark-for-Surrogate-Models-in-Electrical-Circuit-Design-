@@ -16,6 +16,21 @@ Circuit-Bench v1.0 provides a standardized benchmark for evaluating AI methods o
 
 ## Circuit Categories
 
+## Circuit Categories
+
+Circuit-Bench v1.0 currently includes benchmark circuits from the following categories.
+
+| Category | Included | Primary Applications | Example Circuits | Status |
+|----------|----------|----------------------|------------------|--------|
+| Analog | Yes | Signal conditioning, amplification | Operational amplifiers, active filters | Stable |
+| Digital | Yes | Logic design and verification | Logic gates, combinational circuits, sequential circuits | Stable |
+| Passive | Yes | Network analysis | RLC circuits, RC filters, RL networks | Stable |
+| Power Electronics | Yes | Energy conversion | Buck converters, boost converters, buck-boost converters | Stable |
+| RF | Yes | High-frequency analysis | Matching networks, resonant circuits | Experimental |
+| Mixed-Signal | Planned | Analog–digital integration | ADCs, DACs | Future Release |
+| Timing Analysis | Planned | Delay estimation | Timing benchmark circuits | Future Release |
+| Fault Diagnosis | Yes | AI benchmarking | Open-circuit, short-circuit, component failure cases | Stable |
+
 ## Benchmark Tasks
 
 ## Dataset Inventory

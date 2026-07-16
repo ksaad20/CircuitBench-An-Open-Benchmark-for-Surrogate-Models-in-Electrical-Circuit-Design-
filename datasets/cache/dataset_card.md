@@ -26,6 +26,7 @@ Cache contents may be regenerated at any time.
 ## Version
 
 v1.0
+Git commit: Add cache dataset card
 
 ## License
 

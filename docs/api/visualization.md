@@ -1,321 +1,207 @@
-# Data Visualization for Circuit Benchmarking
+# Visualizations API Reference
 
 ## Overview
 
-Data visualization transforms numerical results into graphical representations that improve understanding, communication, and decision-making. In Circuit-Bench, visualizations help researchers explore datasets, compare benchmark methods, identify trends, diagnose failures, and communicate experimental findings.
+The Visualizations API provides a standardized interface for generating, managing, exporting, and sharing publication-quality visualizations throughout the Circuit-Bench ecosystem. It enables consistent visualization of benchmark results, circuit simulations, datasets, machine learning performance, and statistical analyses.
 
-Effective visualizations improve reproducibility by making benchmark results easier to interpret and verify.
-
----
-
-# Why Visualization Matters
-
-Visualization enables researchers to:
-
-* Explore datasets
-* Detect anomalies
-* Compare benchmark methods
-* Evaluate model performance
-* Understand circuit behavior
-* Present publication-quality results
-* Communicate findings clearly
-
-Well-designed figures often reveal patterns that are difficult to identify from tables alone.
+The API is designed to support reproducible scientific reporting while integrating seamlessly with datasets, circuits, benchmarks, metrics, and reports.
 
 ---
 
-# Visualization Workflow
+# Purpose
 
-A typical workflow includes:
+The Visualizations API enables users to:
 
-1. Collect data
-2. Clean and validate data
-3. Select an appropriate chart
-4. Generate the visualization
-5. Interpret the results
-6. Archive figures with benchmark outputs
-
----
-
-# Common Visualization Types
-
-Circuit-Bench supports many forms of visualization depending on the task.
-
-## Line Charts
-
-Useful for:
-
-* Time-series signals
-* Voltage waveforms
-* Current waveforms
-* Frequency response
-* Training curves
+* Generate publication-quality figures
+* Visualize benchmark results
+* Plot circuit waveforms
+* Display simulation outputs
+* Compare algorithms
+* Create statistical graphics
+* Export figures for publications
 
 ---
 
-## Scatter Plots
-
-Useful for:
-
-* Regression analysis
-* Correlation studies
-* Prediction accuracy
-* Parameter estimation
-
----
-
-## Bar Charts
-
-Useful for comparing:
-
-* Benchmark scores
-* Model accuracy
-* Runtime
-* Memory usage
-* Power consumption
-
----
-
-## Histograms
-
-Useful for displaying:
-
-* Data distributions
-* Error distributions
-* Noise measurements
-* Component values
-
----
-
-## Box Plots
-
-Useful for comparing:
-
-* Algorithm variability
-* Experimental repeatability
-* Statistical dispersion
-
----
-
-## Heatmaps
-
-Useful for:
-
-* Correlation matrices
-* Confusion matrices
-* Feature importance
-* Sensor arrays
-
----
-
-
-## Confusion Matrices
-
-Confusion matrices summarize classification performance by comparing predicted labels with ground-truth labels.
-
-They provide:
-
-* True Positives (TP)
-* True Negatives (TN)
-* False Positives (FP)
-* False Negatives (FN)
-
-Confusion matrices are widely used for:
-
-* Fault diagnosis
-* Component classification
-* Circuit recognition
-* Defect detection
-
----
-
-## Precision–Recall Curves
-
-Precision–Recall (PR) curves visualize the trade-off between precision and recall across different decision thresholds.
-
-PR curves are particularly useful when:
-
-* Classes are imbalanced.
-* Positive samples are rare.
-* False positives are costly.
-
----
-
-## Learning Curves
-
-Learning curves illustrate model performance during training.
-
-Typical quantities include:
-
-* Training loss
-* Validation loss
-* Training accuracy
-* Validation accuracy
-
-Learning curves help identify:
-
-* Overfitting
-* Underfitting
-* Convergence
-* Training instability
-
----
-
-## Frequency Response Plots
-
-Frequency response plots describe how analog, RF, and mixed-signal circuits respond across frequency.
-
-Common visualizations include:
-
-* Gain versus frequency
-* Phase versus frequency
-* Bode magnitude plots
-* Bode phase plots
-
-These plots are fundamental for analog circuit evaluation.
-
----
-
-## Waveform Visualization
-
-Electronic circuits frequently produce time-varying signals.
-
-Typical waveforms include:
-
-* Voltage
-* Current
-* Power
-* PWM signals
-* Digital logic signals
-* Sensor outputs
-
-Waveform visualization is one of the most common benchmarking outputs.
-
----
-
-## Smith Charts
-
-Smith charts are specialized graphical tools for RF engineering.
-
-Applications include:
-
-* Impedance matching
-* Reflection analysis
-* Transmission line design
-* Antenna characterization
-
-Smith charts are commonly used when evaluating RF benchmark datasets.
-
----
-
-## Spectrograms
-
-Spectrograms display how signal frequency content changes over time.
-
-Applications include:
-
-* RF signal analysis
-* Audio processing
-* Sensor monitoring
-* Fault diagnosis
-* Time-frequency analysis
-
----
-
-## Network Graphs
-
-Graph visualizations represent relationships between interconnected components.
-
-Applications include:
-
-* Netlist visualization
-* Circuit topology analysis
-* Graph neural network datasets
-* Connectivity analysis
-
----
-
-## Sankey Diagrams
-
-Sankey diagrams visualize the flow of quantities between system components.
-
-Typical applications include:
-
-* Energy flow
-* Power distribution
-* Signal routing
-* Benchmark workflow visualization
-
----
-
-## Dashboard Visualization
-
-Complex benchmark results are often presented using dashboards.
-
-Typical dashboard components include:
-
-* Performance metrics
-* Leaderboards
-* Runtime statistics
-* Dataset summaries
-* Interactive plots
-* Resource utilization
-
-Dashboards enable efficient comparison across multiple benchmark runs.
-
----
-
-# Visualization Best Practices
-
-High-quality visualizations should:
-
-* Use descriptive titles.
-* Label all axes.
-* Include measurement units.
-* Use readable fonts.
-* Avoid unnecessary visual clutter.
-* Present consistent scales.
-* Include informative legends.
-* Use color responsibly.
-* Clearly identify benchmark versions.
-* Preserve reproducibility.
-
----
-
-# Visualization in Circuit-Bench
-
-Representative visualization tasks include:
-
+# Supported Visualization Categories
+
+The API supports visualizations for:
+
+* Circuit waveforms
+* Analog signals
+* Digital timing diagrams
+* RF frequency response
+* Power electronics
+* Mixed-signal systems
+* Machine learning evaluation
+* Statistical analysis
+* Benchmark comparisons
 * Dataset exploration
-* Circuit waveform analysis
-* Benchmark comparison
-* Model evaluation
-* Fault localization
-* Parameter estimation
-* Performance reporting
-* Leaderboard generation
-* Publication-quality figure generation
-
-Visualizations should be reproducible and generated directly from benchmark outputs whenever possible.
 
 ---
 
-# Related Topics
+# Core Workflow
 
-Readers may also find the following topics useful:
+A typical workflow consists of:
 
-* Machine Learning
-* Statistics
-* Signal Processing
-* Analog Circuits
-* Digital Circuits
-* Mixed-Signal Circuits
-* RF Circuits
-* Benchmark Evaluation
-* Reporting
+1. Load benchmark data
+2. Select a visualization type
+3. Configure visualization parameters
+4. Generate the figure
+5. Export the visualization
+6. Include the figure in reports or publications
+
+---
+
+# Supported Plot Types
+
+The Visualizations API supports:
+
+* Line plots
+* Scatter plots
+* Bar charts
+* Histograms
+* Box plots
+* Heatmaps
+* Confusion matrices
+* ROC curves
+* Precision-Recall curves
+* Learning curves
+* Frequency response plots
+* Bode plots
+* Smith charts
+* Spectrograms
+* Network graphs
+
+Support for additional visualization types may be added in future releases.
+
+---
+
+# Input Data
+
+Visualizations may be generated from:
+
+* Circuit simulations
+* Waveforms
+* Benchmark results
+* Evaluation metrics
+* Dataset summaries
+* Machine learning predictions
+* Ground-truth labels
+* Statistical analyses
+* Runtime measurements
+
+The API validates input data before rendering whenever possible.
+
+---
+
+# Configuration
+
+Visualization options may include:
+
+* Figure size
+* Resolution (DPI)
+* Color palette
+* Axis labels
+* Titles
+* Legends
+* Grid display
+* Font size
+* Output format
+
+Configuration files should be archived to ensure reproducibility.
+
+---
+
+# Interactive Visualizations
+
+Where supported, interactive features may include:
+
+* Zooming
+* Panning
+* Tooltips
+* Legend filtering
+* Hover information
+* Dynamic scaling
+
+Interactive views are useful for exploratory data analysis.
+
+---
+
+# Export Formats
+
+Visualizations may be exported as:
+
+* PNG
+* SVG
+* PDF
+* JPEG
+* HTML
+* JSON
+* Interactive dashboards
+
+Vector formats are recommended for publication-quality figures.
+
+---
+
+# Integration
+
+The Visualizations API integrates with:
+
+* Datasets API
+* Circuits API
+* Benchmarks API
+* Metrics API
+* Reports API
+* Machine learning pipelines
+* Simulation workflows
+
+This integration enables automated generation of figures throughout the benchmarking process.
+
+---
+
+# Error Handling
+
+The API should detect and report:
+
+* Missing input data
+* Invalid plot parameters
+* Unsupported visualization types
+* Empty datasets
+* Invalid axis definitions
+* Export failures
+
+Errors should include descriptive messages to simplify debugging.
+
+---
+
+# Best Practices
+
+When using the Visualizations API:
+
+* Use descriptive figure titles.
+* Label all axes with units where appropriate.
+* Choose visualization types suited to the data.
+* Avoid unnecessary visual clutter.
+* Use consistent formatting across figures.
+* Archive visualization configuration files.
+* Preserve the underlying data used to generate figures.
+
+---
+
+# Related Documentation
+
+Additional documentation includes:
+
+* Theory: Visualization
+* Theory: Metrics
+* Theory: Simulation
+* API: Metrics
+* API: Reports
+* API: Benchmarks
+* Tutorials: Generate Report
 
 ---
 
 # Summary
 
-Visualization is an essential component of scientific benchmarking. Effective figures transform raw benchmark outputs into interpretable insights, enabling researchers to understand model behavior, compare competing methods, identify anomalies, and communicate reproducible results. Circuit-Bench encourages standardized, publication-quality visualizations that support transparent and rigorous evaluation across diverse circuit domains.
+The Visualizations API provides a unified framework for creating high-quality, reproducible visualizations across the Circuit-Bench ecosystem. By standardizing plotting, configuration, export, and integration with benchmark workflows, it enables clear communication of experimental results and supports rigorous scientific reporting.

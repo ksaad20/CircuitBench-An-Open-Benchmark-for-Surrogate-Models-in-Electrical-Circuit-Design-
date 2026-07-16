@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from .base import app as base_app
 from .benchmarks import app as benchmarks_app
 from .cache import app as cache_app
 from .clean import app as clean_app

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Dict
+from typing import List
 
 
 @dataclass(frozen=True)
@@ -20,7 +22,7 @@ class ModelRegistry:
 
     def __init__(self) -> None:
         """Initialize the registry."""
-        self._models: dict[str, APIModel] = {}
+        self._models: Dict[str, APIModel] = {}
 
     def register(
         self,
@@ -42,27 +44,27 @@ class ModelRegistry:
         return self._models[name]
 
     def exists(self, name: str) -> bool:
-        """Return True if a model exists."""
+        """Return True if the model exists."""
         return name in self._models
 
-    def list(self) -> list[APIModel]:
+    def list(self) -> List[APIModel]:
         """Return all registered models."""
         return sorted(
             self._models.values(),
             key=lambda model: model.name,
         )
 
-    def names(self) -> list[str]:
-        """Return all model names."""
+    def names(self) -> List[str]:
+        """Return model names."""
         return sorted(self._models.keys())
 
     def count(self) -> int:
-        """Return the number of registered models."""
+        """Return the number of models."""
         return len(self._models)
 
 
 def create_registry() -> ModelRegistry:
-    """Create a registry populated with default models."""
+    """Create a default model registry."""
     registry = ModelRegistry()
 
     registry.register(
@@ -105,13 +107,15 @@ def main() -> None:
 
     for model in registry.list():
         print(
-            f"{model.name:<24}"
-            f"{model.version:<8}"
-            f"{model.task}"
+            "{:<24}{:<8}{}".format(
+                model.name,
+                model.version,
+                model.task,
+            )
         )
 
     print("-" * 60)
-    print(f"Total models: {registry.count()}")
+    print("Total models: {}".format(registry.count()))
 
 
 if __name__ == "__main__":

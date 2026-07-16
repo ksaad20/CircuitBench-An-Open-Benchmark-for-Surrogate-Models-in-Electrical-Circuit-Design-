@@ -5,6 +5,7 @@
 ![Black](https://img.shields.io/badge/code%20style-black-000000)
 ![Ruff](https://img.shields.io/badge/linter-ruff-red)
 [![Tests](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml/badge.svg)](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387582.svg)](https://doi.org/10.5281/zenodo.21387582)
 
 ## Architecture
 

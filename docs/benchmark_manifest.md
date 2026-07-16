@@ -31,6 +31,10 @@ Circuit-Bench v1.0 currently includes benchmark circuits from the following cate
 | Timing Analysis | Planned | Delay estimation | Timing benchmark circuits | Future Release |
 | Fault Diagnosis | Yes | AI benchmarking | Open-circuit, short-circuit, component failure cases | Stable |
 
+### Category Selection Criteria
+
+Circuit categories are selected based on their importance in electrical engineering education, industrial design workflows, and AI-assisted circuit analysis. Each benchmark category contains representative circuits intended to evaluate machine learning algorithms under reproducible conditions.
+
 ## Benchmark Tasks
 
 ## Dataset Inventory

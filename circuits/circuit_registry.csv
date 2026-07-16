@@ -1,11 +1,11 @@
-circuit_id,
-circuit_name,
-category,
-benchmark_task,
-difficulty,
-simulator,
-dataset,
-ground_truth,
-status,
-version,
-license
+circuit_id, CB-ANA-001, CB-PWR-001, CB-DIG-001
+circuit_name, Low Pass Filter, Buck Converter, CMOS Inverter
+category, Analog, Power, Digital
+benchmark_task, Prediction, Circuit Optimization, Fault Diagnosis 
+difficulty, Medium, Hard, Easy
+simulator, ngspice, ngspice, PySpice
+dataset, analog_v1, power_v1, digital_v1
+ground_truth, Yes, Yes, Yes
+status, Official, Official, Official 
+version, v1.0, v1.0, v1.0
+license, Apache-2.0, Apache-2.0, Apache-2.0

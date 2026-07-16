@@ -10,3 +10,7 @@ Expected figures include:
 - Category performance
 - Leaderboards
 - Ablation studies
+
+## Version 
+
+git commit: Add benchmark figures index

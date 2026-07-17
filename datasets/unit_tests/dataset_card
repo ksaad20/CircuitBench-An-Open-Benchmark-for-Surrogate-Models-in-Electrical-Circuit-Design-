@@ -1,0 +1,182 @@
+# Dataset Card: Unit Tests
+
+## Overview
+
+The `datasets/unit_tests/` folder contains datasets specifically designed to verify the correctness, consistency, and reliability of Circuit-Bench dataset processing functions. These datasets support automated testing by providing controlled inputs with known expected outputs.
+
+---
+
+## Purpose
+
+The unit test datasets are intended to:
+
+- Verify dataset loading functions
+- Validate preprocessing pipelines
+- Test parsers and converters
+- Ensure metadata consistency
+- Detect regressions after code changes
+- Support continuous integration (CI) testing
+
+---
+
+## Intended Applications
+
+These datasets are suitable for:
+
+- Automated unit testing
+- Continuous integration (CI)
+- Regression testing
+- Dataset validation
+- Software quality assurance
+- Benchmark pipeline verification
+
+---
+
+## Folder Organization
+
+A typical directory structure may resemble:
+
+```text
+unit_tests/
+├── analog/
+├── digital/
+├── passive/
+├── active/
+├── rf/
+├── power_electronics/
+├── malformed/
+├── expected_outputs/
+├── metadata/
+└── README.md
+```
+
+The structure may evolve as additional benchmark tasks and testing scenarios are introduced.
+
+---
+
+## Dataset Contents
+
+Unit test datasets may include:
+
+- Small circuit netlists
+- Synthetic benchmark circuits
+- Ground-truth labels
+- Metadata files
+- Reference outputs
+- Edge-case examples
+- Invalid or malformed datasets
+- Test fixtures
+
+---
+
+## Testing Objectives
+
+These datasets are used to verify:
+
+- Dataset loading
+- File parsing
+- Metadata extraction
+- Label integrity
+- Schema compliance
+- Error handling
+- Data normalization
+- Output consistency
+
+---
+
+## Quality Assurance
+
+Each unit test dataset should undergo:
+
+- Manual verification
+- Schema validation
+- Metadata validation
+- Duplicate detection
+- File integrity verification
+- Expected output verification
+
+---
+
+## Recommended Usage
+
+Developers are encouraged to:
+
+- Execute unit tests after modifying dataset utilities.
+- Keep test datasets lightweight for fast execution.
+- Use deterministic test cases.
+- Clearly document expected outputs.
+- Maintain compatibility across supported software versions.
+
+---
+
+## Example Testing Workflow
+
+```text
+Unit Test Dataset
+        │
+        ▼
+Dataset Loader
+        │
+        ▼
+Preprocessing Pipeline
+        │
+        ▼
+Validation Checks
+        │
+        ▼
+Expected Output Comparison
+        │
+        ▼
+Pass / Fail Result
+```
+
+---
+
+## Best Practices
+
+Users should:
+
+- Keep unit test datasets independent of training and evaluation datasets.
+- Include representative edge cases.
+- Avoid unnecessary dataset complexity.
+- Update expected outputs when intentional changes are introduced.
+- Version-control all testing datasets.
+
+---
+
+## Limitations
+
+Unit test datasets are intentionally small and controlled. They may not:
+
+- Represent real-world dataset diversity
+- Capture all circuit topologies
+- Evaluate model performance
+- Replace integration or system testing
+
+Comprehensive testing should combine unit, integration, and benchmark evaluations.
+
+---
+
+## Future Improvements
+
+Future unit test datasets may include:
+
+- Expanded edge-case coverage
+- Cross-platform validation datasets
+- Mixed-signal test fixtures
+- Large-scale parser stress tests
+- Corrupted file handling tests
+- Automated test data generation
+- Performance benchmarking fixtures
+
+---
+
+## License
+
+Unit test datasets are distributed under the license accompanying each dataset or, unless otherwise specified, under the license of the Circuit-Bench repository.
+
+---
+
+## Contact
+
+Questions, corrections, bug reports, or contributions related to unit test datasets are welcome through the Circuit-Bench GitHub repository.

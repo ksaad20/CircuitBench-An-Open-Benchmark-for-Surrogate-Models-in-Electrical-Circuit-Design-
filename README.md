@@ -7,6 +7,18 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387582.svg)](https://doi.org/10.5281/zenodo.21387582)
 [![CI](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml/badge.svg)](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml)
 
+# CircuitBench ⚡
+
+[![PyPI Version](https://img.shields.io/pypi/v/circuitbench.svg)](https://pypi.org/project/circuitbench/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/circuitbench.svg)](https://pypi.org/project/circuitbench/)
+
+An open-source evaluation platform for artificial intelligence methods in electrical circuit design.
+
+## Quick Installation
+
+```bash
+pip install circuitbench
+
 ## Citation
 
 This release of Circuit Bench is archived on Zenodo and can be cited using the following DOI:

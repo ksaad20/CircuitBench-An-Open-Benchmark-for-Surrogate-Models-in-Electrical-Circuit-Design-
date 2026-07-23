@@ -48,6 +48,8 @@ print(dataset.head())
 metrics = cb.evaluate(y_true=dataset['target'], y_pred=your_model_predictions)
 print(f"Benchmark Performance: {metrics}")
 
+```
+
 ## Citation
 
 This release of Circuit Bench is archived on Zenodo and can be cited using the following DOI:

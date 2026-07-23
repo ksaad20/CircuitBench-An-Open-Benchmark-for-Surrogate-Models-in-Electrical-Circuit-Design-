@@ -57,11 +57,11 @@ This release of Circuit Bench is archived on Zenodo and can be cited using the f
 **https://doi.org/10.5281/zenodo.21387582**
 
 @software{circuitbench2026,
-  author       = {Saad, K.},
+  author       = {Asif, K.},
   title        = {CircuitBench: AI Evaluation Framework for Circuit Design},
   year         = 2026,
   publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.xxxxxxx}
+  doi          = {10.5281/zenodo.21387582}
 }
 
 ## Architecture

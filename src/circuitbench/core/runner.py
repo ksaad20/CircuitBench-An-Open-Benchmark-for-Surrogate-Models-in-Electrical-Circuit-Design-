@@ -1,4 +1,5 @@
 import logging
+
 from .registry import BenchmarkRegistry
 
 

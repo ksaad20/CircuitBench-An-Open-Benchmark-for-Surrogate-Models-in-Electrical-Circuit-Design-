@@ -5,7 +5,8 @@ Formatting utilities for the Circuit Bench CLI.
 from __future__ import annotations
 
 import textwrap
-from typing import Any, Iterable
+from collections.abc import Iterable
+from typing import Any
 
 
 def indent(text: str, spaces: int = 4) -> str:

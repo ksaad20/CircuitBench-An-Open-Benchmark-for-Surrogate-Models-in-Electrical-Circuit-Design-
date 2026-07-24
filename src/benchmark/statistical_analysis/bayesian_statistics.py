@@ -11,10 +11,7 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict
-
 import numpy as np
-
 from scipy.stats import t
 
 
@@ -154,7 +151,7 @@ class BayesianStatistics:
         data,
         bic_model_1=None,
         bic_model_2=None,
-    ) -> Dict:
+    ) -> dict:
 
         results = {
             "posterior_mean": cls.posterior_mean(data),

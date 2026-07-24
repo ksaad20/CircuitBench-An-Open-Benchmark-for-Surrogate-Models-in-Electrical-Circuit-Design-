@@ -8,9 +8,10 @@ metrics, reporting and visualization.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from time import perf_counter
-from typing import Any, Callable
+from typing import Any
 
 
 @dataclass

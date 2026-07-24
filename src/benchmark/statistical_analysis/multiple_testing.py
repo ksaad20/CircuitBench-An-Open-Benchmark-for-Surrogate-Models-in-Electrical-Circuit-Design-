@@ -11,10 +11,7 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict
-
 import numpy as np
-
 from statsmodels.stats.multitest import multipletests
 
 
@@ -138,7 +135,7 @@ class MultipleTesting:
     # --------------------------------------------------
 
     @classmethod
-    def compare_all(cls, p_values) -> Dict:
+    def compare_all(cls, p_values) -> dict:
 
         return {
             "bonferroni": cls.bonferroni(p_values),

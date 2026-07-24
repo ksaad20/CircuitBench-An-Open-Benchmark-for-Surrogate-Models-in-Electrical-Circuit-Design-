@@ -1,6 +1,6 @@
-import sys
 import os
 import subprocess
+import sys
 
 
 def test_cli_runs() -> None:

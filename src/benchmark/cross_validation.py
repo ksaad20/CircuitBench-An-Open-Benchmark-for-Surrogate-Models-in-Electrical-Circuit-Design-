@@ -11,8 +11,6 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict, List
-
 import numpy as np
 from sklearn.model_selection import KFold
 
@@ -40,7 +38,7 @@ class CrossValidator:
         model,
         X,
         y,
-    ) -> Dict:
+    ) -> dict:
         """
         Perform K-Fold evaluation.
         """
@@ -51,7 +49,7 @@ class CrossValidator:
             random_state=self.random_state,
         )
 
-        fold_scores: List[float] = []
+        fold_scores: list[float] = []
 
         for train_idx, test_idx in kfold.split(X):
             X_train = X[train_idx]
@@ -87,7 +85,7 @@ class CrossValidator:
 
     def summary(
         self,
-        results: Dict,
+        results: dict,
     ):
 
         print("=" * 70)

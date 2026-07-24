@@ -17,10 +17,10 @@ Example
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any
 
-from .registry import registry
 from .exceptions import InvalidModelError
+from .registry import registry
 
 
 class ModelFactory:
@@ -55,8 +55,8 @@ class ModelFactory:
 
     @staticmethod
     def create_many(
-        model_names: List[str],
-        common_parameters: Dict[str, Any] | None = None,
+        model_names: list[str],
+        common_parameters: dict[str, Any] | None = None,
     ):
         """
         Construct multiple models.
@@ -106,7 +106,7 @@ class ModelFactory:
     # -----------------------------------------------------
 
     @staticmethod
-    def create_from_config(config: Dict[str, Any]):
+    def create_from_config(config: dict[str, Any]):
         """
         Construct a model from a configuration dictionary.
 

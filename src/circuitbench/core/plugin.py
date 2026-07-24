@@ -16,17 +16,14 @@ class Plugin(ABC):
     @abstractmethod
     def initialize(self):
         """Initialize plugin."""
-        pass
 
     @abstractmethod
     def execute(self, *args, **kwargs):
         """Execute plugin."""
-        pass
 
     @abstractmethod
     def shutdown(self):
         """Cleanup plugin resources."""
-        pass
 
 
 class PluginManager:

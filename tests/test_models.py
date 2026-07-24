@@ -2,8 +2,8 @@
 Machine-learning model tests.
 """
 
-from sklearn.linear_model import LinearRegression
 import numpy as np
+from sklearn.linear_model import LinearRegression
 
 
 def test_linear_regression_fit():

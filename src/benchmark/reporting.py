@@ -16,7 +16,6 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Dict
 
 import pandas as pd
 
@@ -62,7 +61,7 @@ class BenchmarkReport:
     def add_statistics(
         self,
         name: str,
-        results: Dict,
+        results: dict,
     ):
 
         self.statistics[name] = results

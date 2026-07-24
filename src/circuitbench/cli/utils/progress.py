@@ -6,6 +6,8 @@ from collections.abc import Iterable, Iterator
 from dataclasses import dataclass, field
 from typing import Any
 
+from typing_extensions import Self
+
 
 @dataclass
 class _Task:
@@ -22,7 +24,7 @@ class Progress:
         self._tasks: dict[int, _Task] = {}
         self._next_task_id = 1
 
-    def __enter__(self) -> "Progress":
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, exc_type, exc, tb) -> bool:
@@ -37,8 +39,8 @@ class Progress:
     def add_task(
         self,
         description: str = "",
-        total: int | float | None = None,
-        completed: int | float = 0,
+        total: float | None = None,
+        completed: float = 0,
         **fields: Any,
     ) -> int:
         task_id = self._next_task_id
@@ -54,10 +56,10 @@ class Progress:
     def update(
         self,
         task_id: int,
-        advance: int | float = 0,
-        completed: int | float | None = None,
+        advance: float = 0,
+        completed: float | None = None,
         description: str | None = None,
-        total: int | float | None = None,
+        total: float | None = None,
         **fields: Any,
     ) -> None:
         task = self._tasks.setdefault(task_id, _Task())
@@ -78,8 +80,7 @@ class Progress:
     def track(
         self, iterable: Iterable[Any], *args: Any, **kwargs: Any
     ) -> Iterator[Any]:
-        for item in iterable:
-            yield item
+        yield from iterable
 
     def print(self, *args: Any, **kwargs: Any) -> None:
         print(*args, **kwargs)
@@ -87,8 +88,7 @@ class Progress:
 
 def track(iterable: Iterable[Any], *args: Any, **kwargs: Any) -> Iterator[Any]:
     """Standalone track helper compatible with rich.progress.track."""
-    for item in iterable:
-        yield item
+    yield from iterable
 
 
 __all__ = ["Progress", "track"]

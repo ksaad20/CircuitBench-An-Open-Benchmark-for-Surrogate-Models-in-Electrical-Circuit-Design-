@@ -11,8 +11,6 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict, List
-
 from .constant_predictor import ConstantPredictor
 from .mean_predictor import MeanPredictor
 from .median_predictor import MedianPredictor
@@ -67,7 +65,7 @@ class BaselineFactory:
     # ---------------------------------------------------------
 
     @classmethod
-    def available(cls) -> List[str]:
+    def available(cls) -> list[str]:
         """
         Return available baseline models.
         """
@@ -77,7 +75,7 @@ class BaselineFactory:
     # ---------------------------------------------------------
 
     @classmethod
-    def registry(cls) -> Dict[str, type]:
+    def registry(cls) -> dict[str, type]:
         """
         Return complete registry.
         """

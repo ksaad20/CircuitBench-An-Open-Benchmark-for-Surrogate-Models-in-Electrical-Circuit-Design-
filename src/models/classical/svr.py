@@ -11,7 +11,6 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-
 from sklearn.svm import SVR
 
 from src.models.classical.sklearn_model import SklearnModel

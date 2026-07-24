@@ -13,30 +13,28 @@ from __future__ import annotations
 
 from typing import Any
 
-
 from sklearn.metrics import (
     accuracy_score,
     average_precision_score,
     balanced_accuracy_score,
     brier_score_loss,
+    classification_report,
     cohen_kappa_score,
     confusion_matrix,
     f1_score,
     log_loss,
     matthews_corrcoef,
+    multilabel_confusion_matrix,
     precision_recall_curve,
     precision_score,
     recall_score,
     roc_auc_score,
     roc_curve,
     top_k_accuracy_score,
-    classification_report,
-    multilabel_confusion_matrix,
 )
 
 
 class ClassificationMetrics:
-
     @staticmethod
     def confusion(y_true, y_pred):
 
@@ -355,7 +353,6 @@ class ClassificationMetrics:
         }
 
         if y_score is not None:
-
             report["ROC_AUC"] = cls.roc_auc(
                 y_true,
                 y_score,
@@ -367,7 +364,6 @@ class ClassificationMetrics:
             )
 
         if y_prob is not None:
-
             report["LogLoss"] = cls.log_loss(
                 y_true,
                 y_prob,

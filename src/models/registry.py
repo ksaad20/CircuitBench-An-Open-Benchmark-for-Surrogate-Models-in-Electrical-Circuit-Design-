@@ -14,7 +14,8 @@ Supports:
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Any, Callable, Dict, List, Optional, Type
+from collections.abc import Callable
+from typing import Any
 
 from .exceptions import (
     InvalidModelError,
@@ -35,17 +36,17 @@ class ModelRegistry:
 
     def __init__(self):
 
-        self._models: Dict[str, Type] = {}
+        self._models: dict[str, type] = {}
 
-        self._categories: Dict[str, List[str]] = defaultdict(list)
+        self._categories: dict[str, list[str]] = defaultdict(list)
 
-        self._metadata: Dict[str, Dict[str, Any]] = {}
+        self._metadata: dict[str, dict[str, Any]] = {}
 
     # -----------------------------------------------------
 
     def register(
         self,
-        name: Optional[str] = None,
+        name: str | None = None,
         category: str = "general",
         **metadata,
     ) -> Callable:
@@ -248,6 +249,6 @@ def register_model(
 
 __all__ = [
     "ModelRegistry",
-    "registry",
     "register_model",
+    "registry",
 ]

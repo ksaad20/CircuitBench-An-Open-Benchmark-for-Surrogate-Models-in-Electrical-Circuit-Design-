@@ -10,13 +10,11 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 import pytest
-
 from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
 
 
 class DummyDataset:
-
     def __init__(self):
 
         X, y = make_regression(

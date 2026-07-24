@@ -11,10 +11,7 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict, Tuple
-
 import numpy as np
-
 from scipy import stats
 
 
@@ -27,7 +24,7 @@ class ConfidenceIntervals:
     def mean_confidence_interval(
         x,
         confidence: float = 0.95,
-    ) -> Tuple[float, float]:
+    ) -> tuple[float, float]:
 
         x = np.asarray(x, dtype=float)
 
@@ -53,7 +50,7 @@ class ConfidenceIntervals:
     def prediction_interval(
         x,
         confidence: float = 0.95,
-    ) -> Tuple[float, float]:
+    ) -> tuple[float, float]:
 
         x = np.asarray(x, dtype=float)
 
@@ -182,7 +179,7 @@ class ConfidenceIntervals:
         cls,
         x,
         confidence: float = 0.95,
-    ) -> Dict:
+    ) -> dict:
 
         return {
             "mean_ci": cls.mean_confidence_interval(

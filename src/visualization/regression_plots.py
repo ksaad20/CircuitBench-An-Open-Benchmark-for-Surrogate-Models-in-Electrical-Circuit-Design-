@@ -11,8 +11,8 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 class RegressionPlots:
@@ -34,7 +34,7 @@ class RegressionPlots:
         y_pred = np.asarray(y_pred)
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.scatter(
             y_true,
@@ -83,7 +83,7 @@ class RegressionPlots:
         residuals = y_true - y_pred
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.scatter(
             y_pred,
@@ -117,7 +117,7 @@ class RegressionPlots:
         errors = np.asarray(y_true) - np.asarray(y_pred)
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.hist(
             errors,
@@ -152,8 +152,7 @@ class RegressionPlots:
         sd = np.std(diff)
 
         if ax is None:
-
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.scatter(
             mean,
@@ -199,8 +198,7 @@ class RegressionPlots:
         residuals = np.asarray(residuals)
 
         if ax is None:
-
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         stats.probplot(
             residuals,
@@ -225,8 +223,7 @@ class RegressionPlots:
         residuals = np.asarray(y_true) - np.asarray(y_pred)
 
         if ax is None:
-
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.scatter(
             y_pred,

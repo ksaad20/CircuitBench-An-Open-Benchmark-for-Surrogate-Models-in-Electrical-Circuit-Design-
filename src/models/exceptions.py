@@ -21,8 +21,6 @@ class CircuitBenchError(Exception):
     Base exception for the entire CircuitBench framework.
     """
 
-    pass
-
 
 # ============================================================
 # Model Errors
@@ -34,15 +32,11 @@ class ModelError(CircuitBenchError):
     Base class for model-related exceptions.
     """
 
-    pass
-
 
 class ModelNotFittedError(ModelError):
     """
     Raised when predict() is called before fit().
     """
-
-    pass
 
 
 class InvalidModelError(ModelError):
@@ -50,23 +44,17 @@ class InvalidModelError(ModelError):
     Raised when an unsupported model is requested.
     """
 
-    pass
-
 
 class UnsupportedModelError(ModelError):
     """
     Raised when the selected model is unavailable.
     """
 
-    pass
-
 
 class ModelRegistrationError(ModelError):
     """
     Raised when duplicate model registration occurs.
     """
-
-    pass
 
 
 # ============================================================
@@ -79,15 +67,11 @@ class DatasetError(CircuitBenchError):
     Base dataset exception.
     """
 
-    pass
-
 
 class DatasetNotFoundError(DatasetError):
     """
     Dataset cannot be located.
     """
-
-    pass
 
 
 class InvalidDatasetError(DatasetError):
@@ -95,15 +79,11 @@ class InvalidDatasetError(DatasetError):
     Dataset format is invalid.
     """
 
-    pass
-
 
 class DatasetValidationError(DatasetError):
     """
     Dataset failed validation.
     """
-
-    pass
 
 
 # ============================================================
@@ -116,23 +96,17 @@ class TrainingError(CircuitBenchError):
     Generic training failure.
     """
 
-    pass
-
 
 class ConvergenceError(TrainingError):
     """
     Optimization failed to converge.
     """
 
-    pass
-
 
 class EarlyStoppingTriggered(TrainingError):
     """
     Early stopping was activated.
     """
-
-    pass
 
 
 # ============================================================
@@ -145,15 +119,11 @@ class EvaluationError(CircuitBenchError):
     Base evaluation exception.
     """
 
-    pass
-
 
 class MetricError(EvaluationError):
     """
     Invalid evaluation metric.
     """
-
-    pass
 
 
 # ============================================================
@@ -166,23 +136,17 @@ class HyperparameterError(CircuitBenchError):
     Base optimization exception.
     """
 
-    pass
-
 
 class InvalidSearchSpaceError(HyperparameterError):
     """
     Search space definition is invalid.
     """
 
-    pass
-
 
 class TrialFailedError(HyperparameterError):
     """
     Optimization trial failed.
     """
-
-    pass
 
 
 # ============================================================
@@ -195,23 +159,17 @@ class PhysicsError(CircuitBenchError):
     Base physics exception.
     """
 
-    pass
-
 
 class ConstraintViolationError(PhysicsError):
     """
     Physical constraints were violated.
     """
 
-    pass
-
 
 class SpiceSimulationError(PhysicsError):
     """
     SPICE simulation failed.
     """
-
-    pass
 
 
 # ============================================================
@@ -224,23 +182,17 @@ class GraphError(CircuitBenchError):
     Base graph learning exception.
     """
 
-    pass
-
 
 class InvalidGraphError(GraphError):
     """
     Invalid graph supplied.
     """
 
-    pass
-
 
 class GraphConstructionError(GraphError):
     """
     Graph construction failed.
     """
-
-    pass
 
 
 # ============================================================
@@ -253,15 +205,11 @@ class ConfigurationError(CircuitBenchError):
     Invalid configuration.
     """
 
-    pass
-
 
 class SerializationError(CircuitBenchError):
     """
     Failed to serialize object.
     """
-
-    pass
 
 
 class CheckpointError(CircuitBenchError):
@@ -269,39 +217,37 @@ class CheckpointError(CircuitBenchError):
     Checkpoint loading/saving failed.
     """
 
-    pass
-
 
 # ============================================================
 # Utility
 # ============================================================
 
 __all__ = [
+    "CheckpointError",
     "CircuitBenchError",
-    "ModelError",
-    "ModelNotFittedError",
-    "InvalidModelError",
-    "UnsupportedModelError",
-    "ModelRegistrationError",
+    "ConfigurationError",
+    "ConstraintViolationError",
+    "ConvergenceError",
     "DatasetError",
     "DatasetNotFoundError",
-    "InvalidDatasetError",
     "DatasetValidationError",
-    "TrainingError",
-    "ConvergenceError",
     "EarlyStoppingTriggered",
     "EvaluationError",
-    "MetricError",
-    "HyperparameterError",
-    "InvalidSearchSpaceError",
-    "TrialFailedError",
-    "PhysicsError",
-    "ConstraintViolationError",
-    "SpiceSimulationError",
-    "GraphError",
-    "InvalidGraphError",
     "GraphConstructionError",
-    "ConfigurationError",
+    "GraphError",
+    "HyperparameterError",
+    "InvalidDatasetError",
+    "InvalidGraphError",
+    "InvalidModelError",
+    "InvalidSearchSpaceError",
+    "MetricError",
+    "ModelError",
+    "ModelNotFittedError",
+    "ModelRegistrationError",
+    "PhysicsError",
     "SerializationError",
-    "CheckpointError",
+    "SpiceSimulationError",
+    "TrainingError",
+    "TrialFailedError",
+    "UnsupportedModelError",
 ]

@@ -8,11 +8,11 @@ src.benchmark.runner.runner.
 from __future__ import annotations
 
 from benchmark.runner.runner import (
-    BenchmarkRunner,
     BenchmarkResult,
+    BenchmarkRunner,
 )
 
 __all__ = [
-    "BenchmarkRunner",
     "BenchmarkResult",
+    "BenchmarkRunner",
 ]

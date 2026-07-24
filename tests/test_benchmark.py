@@ -13,12 +13,12 @@ def test_benchmark_module_exists():
 
 
 def test_available_benchmarks():
-    import src.benchmark as benchmark
+    from src import benchmark
 
     assert hasattr(benchmark, "AVAILABLE_BENCHMARKS")
 
 
 def test_benchmark_is_list():
-    import src.benchmark as benchmark
+    from src import benchmark
 
     assert isinstance(benchmark.AVAILABLE_BENCHMARKS, list)

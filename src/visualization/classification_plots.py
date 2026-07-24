@@ -12,14 +12,12 @@ CircuitBench Development Team
 from __future__ import annotations
 
 import matplotlib.pyplot as plt
-
-
 from sklearn.metrics import (
-    roc_curve,
-    precision_recall_curve,
+    ConfusionMatrixDisplay,
     auc,
     confusion_matrix,
-    ConfusionMatrixDisplay,
+    precision_recall_curve,
+    roc_curve,
 )
 
 
@@ -49,7 +47,7 @@ class ClassificationPlots:
         )
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.plot(
             fpr,
@@ -95,7 +93,7 @@ class ClassificationPlots:
         )
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         ax.plot(
             recall,
@@ -133,7 +131,7 @@ class ClassificationPlots:
         )
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=(6, 6))
+            _fig, ax = plt.subplots(figsize=(6, 6))
 
         disp = ConfusionMatrixDisplay(
             confusion_matrix=cm,

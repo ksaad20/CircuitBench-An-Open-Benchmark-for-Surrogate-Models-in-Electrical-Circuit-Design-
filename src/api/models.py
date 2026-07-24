@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
+import builtins
 from dataclasses import dataclass
-from typing import Dict
-from typing import List
 
 
 @dataclass(frozen=True)
@@ -22,7 +21,7 @@ class ModelRegistry:
 
     def __init__(self) -> None:
         """Initialize the registry."""
-        self._models: Dict[str, APIModel] = {}
+        self._models: dict[str, APIModel] = {}
 
     def register(
         self,
@@ -47,14 +46,14 @@ class ModelRegistry:
         """Return True if the model exists."""
         return name in self._models
 
-    def list(self) -> List[APIModel]:
+    def list(self) -> builtins.list[APIModel]:
         """Return all registered models."""
         return sorted(
             self._models.values(),
             key=lambda model: model.name,
         )
 
-    def names(self) -> List[str]:
+    def names(self) -> builtins.list[str]:
         """Return model names."""
         return sorted(self._models.keys())
 
@@ -106,16 +105,10 @@ def main() -> None:
     print("-" * 60)
 
     for model in registry.list():
-        print(
-            "{:<24}{:<8}{}".format(
-                model.name,
-                model.version,
-                model.task,
-            )
-        )
+        print(f"{model.name:<24}{model.version:<8}{model.task}")
 
     print("-" * 60)
-    print("Total models: {}".format(registry.count()))
+    print(f"Total models: {registry.count()}")
 
 
 if __name__ == "__main__":

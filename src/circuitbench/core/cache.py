@@ -2,9 +2,9 @@
 Simple object caching for CircuitBench.
 """
 
-from pathlib import Path
 import hashlib
 import pickle
+from pathlib import Path
 
 
 class Cache:

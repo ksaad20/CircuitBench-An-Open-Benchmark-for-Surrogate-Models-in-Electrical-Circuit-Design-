@@ -12,14 +12,14 @@ Modules
 - ice
 """
 
+from .ice import ICEPlots
+from .partial_dependence import PartialDependence
 from .permutation_importance import PermutationImportance
 from .shap_wrapper import SHAPWrapper
-from .partial_dependence import PartialDependence
-from .ice import ICEPlots
 
 __all__ = [
+    "ICEPlots",
+    "PartialDependence",
     "PermutationImportance",
     "SHAPWrapper",
-    "PartialDependence",
-    "ICEPlots",
 ]

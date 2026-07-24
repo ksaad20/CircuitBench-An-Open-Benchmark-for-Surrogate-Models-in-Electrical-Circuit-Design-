@@ -11,19 +11,16 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict
-
 import numpy as np
-
 from scipy.stats import (
-    ttest_rel,
-    ttest_ind,
-    wilcoxon,
-    mannwhitneyu,
     friedmanchisquare,
-    shapiro,
     levene,
+    mannwhitneyu,
     normaltest,
+    shapiro,
+    ttest_ind,
+    ttest_rel,
+    wilcoxon,
 )
 
 
@@ -33,7 +30,7 @@ class HypothesisTesting:
     """
 
     @staticmethod
-    def paired_t_test(x, y) -> Dict:
+    def paired_t_test(x, y) -> dict:
 
         statistic, p = ttest_rel(x, y)
 
@@ -47,7 +44,7 @@ class HypothesisTesting:
     # ----------------------------------------------------
 
     @staticmethod
-    def independent_t_test(x, y) -> Dict:
+    def independent_t_test(x, y) -> dict:
 
         statistic, p = ttest_ind(
             x,
@@ -65,7 +62,7 @@ class HypothesisTesting:
     # ----------------------------------------------------
 
     @staticmethod
-    def wilcoxon_signed_rank(x, y) -> Dict:
+    def wilcoxon_signed_rank(x, y) -> dict:
 
         statistic, p = wilcoxon(x, y)
 
@@ -79,7 +76,7 @@ class HypothesisTesting:
     # ----------------------------------------------------
 
     @staticmethod
-    def mann_whitney(x, y) -> Dict:
+    def mann_whitney(x, y) -> dict:
 
         statistic, p = mannwhitneyu(
             x,
@@ -97,7 +94,7 @@ class HypothesisTesting:
     # ----------------------------------------------------
 
     @staticmethod
-    def friedman(*groups) -> Dict:
+    def friedman(*groups) -> dict:
 
         statistic, p = friedmanchisquare(*groups)
 
@@ -111,7 +108,7 @@ class HypothesisTesting:
     # ----------------------------------------------------
 
     @staticmethod
-    def shapiro_test(x) -> Dict:
+    def shapiro_test(x) -> dict:
 
         statistic, p = shapiro(x)
 
@@ -125,7 +122,7 @@ class HypothesisTesting:
     # ----------------------------------------------------
 
     @staticmethod
-    def normality_test(x) -> Dict:
+    def normality_test(x) -> dict:
 
         statistic, p = normaltest(x)
 
@@ -139,7 +136,7 @@ class HypothesisTesting:
     # ----------------------------------------------------
 
     @staticmethod
-    def levene_test(*groups) -> Dict:
+    def levene_test(*groups) -> dict:
 
         statistic, p = levene(*groups)
 

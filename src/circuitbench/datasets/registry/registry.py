@@ -4,15 +4,13 @@ Dataset Registry
 Central registry for all CircuitBench datasets.
 """
 
-from typing import Dict
-
 from ..base.dataset import Dataset
 
 
 class DatasetRegistry:
     def __init__(self):
 
-        self._datasets: Dict[str, Dataset] = {}
+        self._datasets: dict[str, Dataset] = {}
 
     def register(self, dataset: Dataset):
 

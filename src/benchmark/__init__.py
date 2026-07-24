@@ -4,12 +4,12 @@ CircuitBench Benchmark Framework.
 
 from __future__ import annotations
 
-from .runner import BenchmarkRunner
 from .benchmark_runner import BenchmarkRunner as LegacyBenchmarkRunner
 from .benchmark_suite import BenchmarkSuite
 from .experiment import Experiment
 from .experiment_manager import ExperimentManager
 from .leaderboard import Leaderboard
+from .runner import BenchmarkRunner
 
 AVAILABLE_BENCHMARKS = [
     "classification",
@@ -19,11 +19,11 @@ AVAILABLE_BENCHMARKS = [
 ]
 
 __all__ = [
+    "AVAILABLE_BENCHMARKS",
     "BenchmarkRunner",
-    "LegacyBenchmarkRunner",
     "BenchmarkSuite",
     "Experiment",
     "ExperimentManager",
     "Leaderboard",
-    "AVAILABLE_BENCHMARKS",
+    "LegacyBenchmarkRunner",
 ]

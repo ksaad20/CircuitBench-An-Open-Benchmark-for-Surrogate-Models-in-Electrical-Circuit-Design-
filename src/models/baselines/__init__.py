@@ -19,15 +19,14 @@ Classification
 - ModePredictor
 """
 
+from .base_classifier import BaselineClassifier
 from .base_model import BaselineModel
 from .base_regressor import BaselineRegressor
-from .base_classifier import BaselineClassifier
-
+from .constant_predictor import ConstantPredictor
 from .mean_predictor import MeanPredictor
 from .median_predictor import MedianPredictor
-from .constant_predictor import ConstantPredictor
-from .random_predictor import RandomPredictor
 from .mode_predictor import ModePredictor
+from .random_predictor import RandomPredictor
 
 __version__ = "0.1.0"
 
@@ -51,15 +50,15 @@ CLASSIFICATION_BASELINES = [
 ]
 
 __all__ = [
+    "BASELINE_MODELS",
+    "CLASSIFICATION_BASELINES",
+    "REGRESSION_BASELINES",
+    "BaselineClassifier",
     "BaselineModel",
     "BaselineRegressor",
-    "BaselineClassifier",
+    "ConstantPredictor",
     "MeanPredictor",
     "MedianPredictor",
-    "ConstantPredictor",
-    "RandomPredictor",
     "ModePredictor",
-    "BASELINE_MODELS",
-    "REGRESSION_BASELINES",
-    "CLASSIFICATION_BASELINES",
+    "RandomPredictor",
 ]

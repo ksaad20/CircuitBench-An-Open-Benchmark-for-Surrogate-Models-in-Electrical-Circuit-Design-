@@ -11,12 +11,10 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict
-
 from statsmodels.stats.power import (
-    TTestPower,
-    TTestIndPower,
     FTestAnovaPower,
+    TTestIndPower,
+    TTestPower,
 )
 
 
@@ -128,7 +126,7 @@ class PowerAnalysis:
         effect_size: float,
         n_samples: int,
         alpha: float = 0.05,
-    ) -> Dict:
+    ) -> dict:
 
         return {
             "paired_ttest_power": cls.paired_ttest_power(

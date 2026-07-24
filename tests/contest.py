@@ -2,8 +2,8 @@
 Shared fixtures for CircuitBench.
 """
 
-import pytest
 import numpy as np
+import pytest
 
 
 @pytest.fixture

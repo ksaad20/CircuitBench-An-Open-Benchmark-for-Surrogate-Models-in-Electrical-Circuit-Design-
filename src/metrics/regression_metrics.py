@@ -12,13 +12,12 @@ CircuitBench Development Team
 from __future__ import annotations
 
 import numpy as np
-
 from sklearn.metrics import (
+    explained_variance_score,
+    max_error,
     mean_absolute_error,
     mean_squared_error,
     median_absolute_error,
-    max_error,
-    explained_variance_score,
     r2_score,
 )
 
@@ -368,7 +367,6 @@ class RegressionMetrics:
         scale = np.max(y_true) - np.min(y_true)
 
         if scale == 0:
-
             return 0.0
 
         return float(width / scale)

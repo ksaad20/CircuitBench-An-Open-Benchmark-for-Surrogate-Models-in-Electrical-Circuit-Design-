@@ -12,7 +12,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -23,14 +23,13 @@ class BenchmarkResult:
 
     model_name: str
     dataset_name: str
-    metrics: Dict[str, float]
+    metrics: dict[str, float]
     runtime: float = 0.0
     memory: float = 0.0
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 class BenchmarkRunner:
-
     def __init__(
         self,
         metrics: list | None = None,

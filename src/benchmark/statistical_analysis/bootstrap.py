@@ -11,7 +11,7 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Callable, Dict, Tuple
+from collections.abc import Callable
 
 import numpy as np
 
@@ -82,7 +82,7 @@ class Bootstrap:
         confidence: float = 0.95,
         n_bootstrap: int = 1000,
         random_state: int = 42,
-    ) -> Tuple[float, float]:
+    ) -> tuple[float, float]:
 
         values = Bootstrap.statistic_distribution(
             x,
@@ -162,7 +162,7 @@ class Bootstrap:
         statistic: Callable = np.mean,
         n_bootstrap: int = 1000,
         confidence: float = 0.95,
-    ) -> Dict:
+    ) -> dict:
 
         return {
             "estimate": float(statistic(x)),

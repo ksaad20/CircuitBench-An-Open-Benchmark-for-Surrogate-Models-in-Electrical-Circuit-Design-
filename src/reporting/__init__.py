@@ -5,14 +5,14 @@ CircuitBench Reporting Package
 Reporting utilities for benchmark results.
 """
 
-from .report_generator import ReportGenerator
-from .publication_report import PublicationReport
-from .statistical_report import StatisticalReport
 from .figure_generator import FigureGenerator
+from .publication_report import PublicationReport
+from .report_generator import ReportGenerator
+from .statistical_report import StatisticalReport
 
 __all__ = [
-    "ReportGenerator",
-    "PublicationReport",
-    "StatisticalReport",
     "FigureGenerator",
+    "PublicationReport",
+    "ReportGenerator",
+    "StatisticalReport",
 ]

@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from .server import APIServer
-from .server import create_server
+from .server import APIServer, create_server
 
 
 class APIRoutes:

@@ -14,9 +14,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
-
 import pandas as pd
-
 from sklearn.metrics import get_scorer
 
 
@@ -88,9 +86,7 @@ class PermutationImportance:
                 raw[
                     feature,
                     repeat,
-                ] = (
-                    baseline - score
-                )
+                ] = baseline - score
 
             X.iloc[
                 :,

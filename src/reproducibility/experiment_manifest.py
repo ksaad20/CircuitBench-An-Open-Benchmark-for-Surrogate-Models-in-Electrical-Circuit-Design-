@@ -11,13 +11,13 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from datetime import datetime
 import json
 import os
 import platform
 import random
 import subprocess
 import sys
+from datetime import datetime
 
 import numpy as np
 

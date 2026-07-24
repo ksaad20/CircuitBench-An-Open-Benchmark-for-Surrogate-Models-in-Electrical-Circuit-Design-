@@ -11,8 +11,6 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict
-
 import numpy as np
 
 
@@ -133,7 +131,7 @@ class EffectSizes:
     # -----------------------------------------------------
 
     @classmethod
-    def summary(cls, x, y) -> Dict:
+    def summary(cls, x, y) -> dict:
 
         d = cls.cohens_d(x, y)
 

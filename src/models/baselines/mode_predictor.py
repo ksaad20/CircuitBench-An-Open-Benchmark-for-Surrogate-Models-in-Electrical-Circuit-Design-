@@ -11,8 +11,8 @@ from collections import Counter
 
 import numpy as np
 
-from src.models.registry import register_model
 from src.models.baselines.base_classifier import BaselineClassifier
+from src.models.registry import register_model
 
 
 @register_model(

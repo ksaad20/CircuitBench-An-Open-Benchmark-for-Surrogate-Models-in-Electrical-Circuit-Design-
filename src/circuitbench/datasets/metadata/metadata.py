@@ -5,7 +5,6 @@ Stores metadata for CircuitBench datasets.
 """
 
 from dataclasses import dataclass, field
-from typing import List, Dict
 
 
 @dataclass
@@ -28,13 +27,13 @@ class DatasetMetadata:
 
     target: str = ""
 
-    features: List[str] = field(default_factory=list)
+    features: list[str] = field(default_factory=list)
 
-    units: Dict[str, str] = field(default_factory=dict)
+    units: dict[str, str] = field(default_factory=dict)
 
-    labels: Dict[str, str] = field(default_factory=dict)
+    labels: dict[str, str] = field(default_factory=dict)
 
-    tags: List[str] = field(default_factory=list)
+    tags: list[str] = field(default_factory=list)
 
     num_samples: int = 0
 

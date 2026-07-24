@@ -12,7 +12,6 @@ def app():
     """
     Circuit-Bench: A tool for physics-based trade arbitrage.
     """
-    pass
 
 
 # Example command to verify functionality

@@ -11,11 +11,11 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict
-from datetime import datetime
-from pathlib import Path
 import json
 import shutil
+from dataclasses import asdict, dataclass
+from datetime import datetime
+from pathlib import Path
 
 
 @dataclass

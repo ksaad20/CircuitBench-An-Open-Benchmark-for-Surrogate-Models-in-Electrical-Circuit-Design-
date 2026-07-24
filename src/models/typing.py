@@ -9,17 +9,14 @@ from __future__ import annotations
 
 import random
 import time
+from collections.abc import Callable, MutableMapping, Sequence
 from pathlib import Path
-from typing import Any, Dict
-import numpy as np
 from typing import (
-    Callable,
-    List,
-    MutableMapping,
-    Sequence,
-    Type,
+    Any,
     Union,
 )
+
+import numpy as np
 
 try:
     import pandas as pd
@@ -34,13 +31,13 @@ Number = Union[int, float]
 
 PathLike = Union[str, Path]
 
-Parameters = Dict[str, Any]
+Parameters = dict[str, Any]
 
-Metadata = Dict[str, Any]
+Metadata = dict[str, Any]
 
-History = Dict[str, Any]
+History = dict[str, Any]
 
-Config = Dict[str, Any]
+Config = dict[str, Any]
 
 # ==========================================================
 # Machine Learning Data
@@ -73,7 +70,7 @@ Probability = ArrayLike
 # Registry
 # ==========================================================
 
-Registry = MutableMapping[str, Type]
+Registry = MutableMapping[str, type]
 
 RegistryMetadata = MutableMapping[str, Metadata]
 
@@ -81,7 +78,7 @@ RegistryMetadata = MutableMapping[str, Metadata]
 # Metrics
 # ==========================================================
 
-MetricResult = Dict[str, float]
+MetricResult = dict[str, float]
 
 MetricFunction = Callable[..., float]
 
@@ -89,27 +86,27 @@ MetricFunction = Callable[..., float]
 # Training
 # ==========================================================
 
-LossHistory = List[float]
+LossHistory = list[float]
 
-ValidationHistory = List[float]
+ValidationHistory = list[float]
 
-EpochHistory = Dict[str, List[float]]
+EpochHistory = dict[str, list[float]]
 
 # ==========================================================
 # Hyperparameter Optimization
 # ==========================================================
 
-SearchSpace = Dict[str, Any]
+SearchSpace = dict[str, Any]
 
-TrialResult = Dict[str, Any]
+TrialResult = dict[str, Any]
 
-OptimizationHistory = List[TrialResult]
+OptimizationHistory = list[TrialResult]
 
 # ==========================================================
 # Explainability
 # ==========================================================
 
-FeatureImportance = Dict[str, float]
+FeatureImportance = dict[str, float]
 
 ShapValues = Any
 
@@ -118,30 +115,30 @@ ShapValues = Any
 # ==========================================================
 
 __all__ = [
-    "Number",
-    "PathLike",
-    "Parameters",
-    "Metadata",
-    "History",
-    "Config",
     "ArrayLike",
+    "Config",
     "DataFrameLike",
+    "EpochHistory",
+    "FeatureImportance",
     "FeatureMatrix",
-    "TargetVector",
+    "History",
+    "LossHistory",
+    "Metadata",
+    "MetricFunction",
+    "MetricResult",
+    "Number",
+    "OptimizationHistory",
+    "Parameters",
+    "PathLike",
     "Prediction",
     "Probability",
     "Registry",
     "RegistryMetadata",
-    "MetricResult",
-    "MetricFunction",
-    "LossHistory",
-    "ValidationHistory",
-    "EpochHistory",
     "SearchSpace",
-    "TrialResult",
-    "OptimizationHistory",
-    "FeatureImportance",
     "ShapValues",
+    "TargetVector",
+    "TrialResult",
+    "ValidationHistory",
 ]
 # ==========================================================
 # Randomness
@@ -214,8 +211,8 @@ def ensure_directory(path: str | Path):
 
 
 def merge_parameters(
-    default: Dict[str, Any],
-    override: Dict[str, Any],
+    default: dict[str, Any],
+    override: dict[str, Any],
 ):
 
     merged = default.copy()
@@ -257,9 +254,9 @@ def print_header(title: str):
 
 __all__ = [
     "Timer",
-    "set_random_seed",
     "ensure_directory",
-    "merge_parameters",
     "is_fitted",
+    "merge_parameters",
     "print_header",
+    "set_random_seed",
 ]

@@ -11,7 +11,7 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 import numpy as np
 from sklearn.linear_model import Ridge
@@ -115,7 +115,7 @@ class RidgeRegressionModel(BaseModel):
 
     # -----------------------------------------------------
 
-    def get_params(self) -> Dict[str, Any]:
+    def get_params(self) -> dict[str, Any]:
 
         return self.model.get_params()
 

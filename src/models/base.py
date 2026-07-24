@@ -10,11 +10,10 @@ License: Apache 2.0
 
 from __future__ import annotations
 
+import pickle
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Dict, Optional
-
-import pickle
+from typing import Any
 
 
 class BaseModel(ABC):
@@ -36,7 +35,7 @@ class BaseModel(ABC):
 
     def __init__(
         self,
-        name: Optional[str] = None,
+        name: str | None = None,
         random_state: int = 42,
     ) -> None:
         self.name = name or self.__class__.__name__
@@ -45,11 +44,11 @@ class BaseModel(ABC):
 
         self.is_fitted = False
 
-        self.metadata: Dict[str, Any] = {}
+        self.metadata: dict[str, Any] = {}
 
-        self.parameters: Dict[str, Any] = {}
+        self.parameters: dict[str, Any] = {}
 
-        self.history: Dict[str, Any] = {}
+        self.history: dict[str, Any] = {}
 
     # --------------------------------------------------
     # Core API
@@ -80,7 +79,7 @@ class BaseModel(ABC):
     # Parameters
     # --------------------------------------------------
 
-    def get_params(self) -> Dict[str, Any]:
+    def get_params(self) -> dict[str, Any]:
         """
         Return parameter dictionary.
         """
@@ -146,7 +145,4 @@ class BaseModel(ABC):
     # --------------------------------------------------
 
     def __repr__(self):
-        return (
-            f"{self.__class__.__name__}"
-            f"(name='{self.name}', fitted={self.is_fitted})"
-        )
+        return f"{self.__class__.__name__}(name='{self.name}', fitted={self.is_fitted})"

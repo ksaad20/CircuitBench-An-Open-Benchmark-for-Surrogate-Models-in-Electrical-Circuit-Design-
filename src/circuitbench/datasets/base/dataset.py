@@ -8,7 +8,6 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Optional, List, Dict
 
 import pandas as pd
 
@@ -18,7 +17,7 @@ class Dataset(ABC):
         self,
         name: str,
         root: str,
-        target: Optional[str] = None,
+        target: str | None = None,
         description: str = "",
     ):
 
@@ -26,7 +25,7 @@ class Dataset(ABC):
         self.root = Path(root)
         self.target = target
         self.description = description
-        self.data: Optional[pd.DataFrame] = None
+        self.data: pd.DataFrame | None = None
 
     @abstractmethod
     def load(self) -> pd.DataFrame:
@@ -42,7 +41,7 @@ class Dataset(ABC):
 
         self.data.to_csv(filename, index=False)
 
-    def features(self) -> List[str]:
+    def features(self) -> list[str]:
 
         if self.data is None:
             raise RuntimeError("Dataset has not been loaded.")
@@ -84,7 +83,7 @@ class Dataset(ABC):
 
         return self.data.isna().sum()
 
-    def summary(self) -> Dict:
+    def summary(self) -> dict:
 
         return {
             "name": self.name,

@@ -12,12 +12,8 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict
-
 import numpy as np
-
-from scipy.stats import rankdata, friedmanchisquare
-from scipy.stats import studentized_range
+from scipy.stats import friedmanchisquare, rankdata, studentized_range
 
 
 class CriticalDifference:
@@ -30,7 +26,7 @@ class CriticalDifference:
 
         scores = np.asarray(scores)
 
-        n_datasets, n_models = scores.shape
+        n_datasets, _n_models = scores.shape
 
         ranks = np.zeros_like(
             scores,
@@ -139,7 +135,7 @@ class CriticalDifference:
     def summary(
         cls,
         scores,
-    ) -> Dict:
+    ) -> dict:
 
         results = cls.compare(scores)
 

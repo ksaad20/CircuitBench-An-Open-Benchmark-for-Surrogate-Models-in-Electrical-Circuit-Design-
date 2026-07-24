@@ -3,8 +3,7 @@ Dataset Preprocessing Pipeline
 """
 
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 
 class PreprocessingPipeline:

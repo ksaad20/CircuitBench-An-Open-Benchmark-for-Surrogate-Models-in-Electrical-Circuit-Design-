@@ -11,19 +11,16 @@ CircuitBench Development Team
 
 from __future__ import annotations
 
-from typing import Dict
-
-
 from scipy.stats import (
-    shapiro,
-    normaltest,
     anderson,
-    levene,
     bartlett,
     fligner,
     jarque_bera,
-    skew,
     kurtosis,
+    levene,
+    normaltest,
+    shapiro,
+    skew,
 )
 
 
@@ -147,7 +144,7 @@ class Assumptions:
     # -----------------------------------------------------
 
     @classmethod
-    def report(cls, x, *groups) -> Dict:
+    def report(cls, x, *groups) -> dict:
 
         report = {
             "sample_size": len(x),

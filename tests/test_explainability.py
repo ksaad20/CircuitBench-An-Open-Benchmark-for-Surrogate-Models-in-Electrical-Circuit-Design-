@@ -3,18 +3,17 @@ Tests for CircuitBench explainability utilities.
 """
 
 import pandas as pd
-
 from sklearn.datasets import make_regression
 from sklearn.ensemble import RandomForestRegressor
 
-from src.explainability.permutation_importance import (
-    PermutationImportance,
+from src.explainability.ice import (
+    ICEPlots,
 )
 from src.explainability.partial_dependence import (
     PartialDependence,
 )
-from src.explainability.ice import (
-    ICEPlots,
+from src.explainability.permutation_importance import (
+    PermutationImportance,
 )
 
 

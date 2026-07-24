@@ -12,8 +12,8 @@ from typing import Any
 
 import numpy as np
 
-from src.models.registry import register_model
 from src.models.baselines.base_regressor import BaselineRegressor
+from src.models.registry import register_model
 
 
 @register_model(

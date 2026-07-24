@@ -22,41 +22,38 @@ from sklearn.base import clone
 from sklearn.model_selection import cross_validate
 
 
-@dataclass
+@dataclass(slots=True)
 class AdvancedBenchmarkResult:
+    """Container for benchmark results."""
+
     model_name: str
-
     task: str
-
     fit_time: float
-
     predict_time: float
-
     memory_mb: float
-
     metrics: dict
 
 
 class AdvancedBenchmarkRunner:
+    """Execute advanced benchmarking for machine learning models."""
+
     def __init__(
         self,
-        metrics,
-    ):
-
+        metrics: dict,
+    ) -> None:
         self.metrics = metrics
 
     @staticmethod
     def detect_task(
         y,
-    ):
-
+    ) -> str:
+        """Detect whether the target is for regression or classification."""
         y = np.asarray(y)
 
         unique = np.unique(y)
 
-        if y.dtype.kind in "ifu":
-            if len(unique) <= 20:
-                return "classification"
+        if y.dtype.kind in "ifu" and len(unique) <= 20:
+            return "classification"
 
         return "regression"
 
@@ -67,7 +64,8 @@ class AdvancedBenchmarkRunner:
         y_train,
         X_test,
         y_test,
-    ):
+    ) -> AdvancedBenchmarkResult:
+        """Train, benchmark and evaluate a model."""
 
         tracemalloc.start()
 
@@ -80,7 +78,7 @@ class AdvancedBenchmarkRunner:
 
         fit_time = perf_counter() - start
 
-        current, peak = tracemalloc.get_traced_memory()
+        _, peak = tracemalloc.get_traced_memory()
 
         tracemalloc.stop()
 
@@ -92,7 +90,7 @@ class AdvancedBenchmarkRunner:
 
         task = self.detect_task(y_train)
 
-        results = {}
+        results: dict[str, float] = {}
 
         for name, metric in self.metrics.items():
             try:
@@ -100,8 +98,12 @@ class AdvancedBenchmarkRunner:
                     y_test,
                     predictions,
                 )
-
-            except Exception:
+            except (
+                ValueError,
+                TypeError,
+                AttributeError,
+                RuntimeError,
+            ):
                 results[name] = np.nan
 
         return AdvancedBenchmarkResult(
@@ -118,9 +120,10 @@ class AdvancedBenchmarkRunner:
         model,
         X,
         y,
-        cv=5,
+        cv: int = 5,
         scoring=None,
     ):
+        """Perform cross-validation."""
 
         estimator = clone(model)
 
@@ -136,20 +139,21 @@ class AdvancedBenchmarkRunner:
     @staticmethod
     def results_dataframe(
         results,
-    ):
+    ) -> pd.DataFrame:
+        """Convert benchmark results into a pandas DataFrame."""
 
         rows = []
 
-        for r in results:
+        for result in results:
             row = {
-                "Model": r.model_name,
-                "Task": r.task,
-                "FitTime": r.fit_time,
-                "PredictTime": r.predict_time,
-                "MemoryMB": r.memory_mb,
+                "Model": result.model_name,
+                "Task": result.task,
+                "FitTime": result.fit_time,
+                "PredictTime": result.predict_time,
+                "MemoryMB": result.memory_mb,
             }
 
-            row.update(r.metrics)
+            row.update(result.metrics)
 
             rows.append(row)
 

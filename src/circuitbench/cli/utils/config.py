@@ -14,7 +14,7 @@ except ImportError:
 
 
 def load_json(path: str):
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -27,7 +27,7 @@ def save_json(data, path: str):
 def load_yaml(path: str):
     if yaml is None:
         raise ImportError("PyYAML is not installed.")
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 

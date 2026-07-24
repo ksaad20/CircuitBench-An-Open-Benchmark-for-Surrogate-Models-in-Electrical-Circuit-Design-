@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 # Append the directory containing your packages
 sys.path.append(os.path.join(os.getcwd(), "src"))

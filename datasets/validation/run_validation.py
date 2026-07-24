@@ -2,9 +2,9 @@
 Run all dataset validation routines.
 """
 
+from validate_checksums import validate_checksums
 from validate_dataset import validate_dataset
 from validate_metadata import validate_metadata
-from validate_checksums import validate_checksums
 
 print("=" * 60)
 print("CircuitBench Dataset Validation")

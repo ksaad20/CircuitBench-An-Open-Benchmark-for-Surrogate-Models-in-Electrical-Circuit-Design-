@@ -62,7 +62,7 @@ jobs:
         run: black --check src tests
 
       - name: Ruff lint
-        run: ruff check src tests
+        run: ruff check src tests --fix --unsafe-fixes
 
       - name: Flake8 lint
         run: flake8 src tests

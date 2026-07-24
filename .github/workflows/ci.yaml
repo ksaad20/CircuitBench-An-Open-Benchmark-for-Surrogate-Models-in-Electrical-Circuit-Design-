@@ -1,3 +1,4 @@
+
 name: CircuitBench CI
 
 on:
@@ -25,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ruff pytest
+          pip install ruff black pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run Ruff Lint Check
@@ -33,6 +34,9 @@ jobs:
 
       - name: Run Ruff Format Check
         run: ruff format --check src tests
+
+      - name: Run Black Code Format Check
+        run: black --check src tests
 
       - name: Run Pytest
         run: pytest

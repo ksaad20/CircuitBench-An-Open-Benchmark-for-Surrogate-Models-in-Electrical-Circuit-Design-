@@ -1,19 +1,17 @@
-
+[tool.ruff]
 target-version = "py310"
-line-length = 100
+line-length = 120
 
-[lint]
+[tool.ruff.lint]
 select = ["E", "F", "I", "W", "UP", "B", "C4", "SIM"]
 ignore = [
     "BLE001",
     "B905",
+    "B008",
     "PLW1510",
     "S101",
     "ANN",
     "UP007",
     "SIM108",
+    "E501",
 ]
-
-[lint.per-file-ignores]
-"tests/**" = ["BLE001", "PLW1510", "S101", "ANN", "UP007", "SIM108"]
-"test_*.py" = ["BLE001", "PLW1510", "S101", "ANN", "UP007", "SIM108"]
